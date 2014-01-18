@@ -19,8 +19,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "..\Projects\Examp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "..\Projects\Example\App\App.csproj", "{F5B17B9B-982B-45E3-A600-140F332859C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.EventSourcing.Esent.Windows", "..\projects\SystemDot.EventSourcing.Esent.Windows\SystemDot.EventSourcing.Esent.Windows.csproj", "{38D275E8-2428-4275-9AC6-1BF5DA234E23}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,10 +57,6 @@ Global
 		{F5B17B9B-982B-45E3-A600-140F332859C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5B17B9B-982B-45E3-A600-140F332859C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5B17B9B-982B-45E3-A600-140F332859C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{38D275E8-2428-4275-9AC6-1BF5DA234E23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38D275E8-2428-4275-9AC6-1BF5DA234E23}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38D275E8-2428-4275-9AC6-1BF5DA234E23}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38D275E8-2428-4275-9AC6-1BF5DA234E23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

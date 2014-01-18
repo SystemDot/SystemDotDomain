@@ -1,60 +1,60 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using SystemDot.Core;
 using SystemDot.EventSourcing.Dispatching;
 using SystemDot.EventSourcing.Sessions;
 
 namespace SystemDot.EventSourcing.Esent.Windows
 {
-    public class EsentEventSession : IEventSession
+    public class EsentEventStream : List<Object>
     {
-        readonly IEventDispatcher eventDispatcher;
-        
-        public EsentEventSession(IEventDispatcher eventDispatcher)
+        public Guid Id { get; set; }
+
+        public EsentEventStream(Guid id)
         {
-            this.eventDispatcher = eventDispatcher;
+            Id = id;
         }
 
-        public Guid CommandId { get; private set; }
-
-        public IEnumerable<object> GetEvents(Guid aggregateRootId)
+        public static EsentEventStream Get(Guid streamId)
         {
-            return Db.Db.GetById<List<Object>>(aggregateRootId);
+            return Db.Db.GetById<EsentEventStream>(streamId);
         }
 
-        public void StoreEvent(object @event, Guid aggregateRootId, Type aggregateRootType)
+        public void Commit()
         {
-            var events = GetEvents(aggregateRootId).ToList();
-            events.Add(@event);
-            Db.Db.Store(aggregateRootId, events);
+            Db.Db.Store(Id, this);
         }
+    }
 
-        public void Commit(Guid commandId)
-        {
-        }
-
-        public void Dispose()
+    public class EsentEventSession : EventSession
+    {
+        public EsentEventSession(IEventDispatcher eventDispatcher) : base(eventDispatcher)
         {
         }
 
-        public IEnumerable<object> AllEvents()
+        public override IEnumerable<object> GetEvents(Guid streamId)
         {
-            return null;
+            return GetEventStream(streamId);
         }
 
-   
-        private class EventContainer
+        static EsentEventStream GetEventStream(Guid streamId)
         {
-            public EventContainer(Guid aggregateRootId, object @event)
-            {
-                AggregateRootId = aggregateRootId;
-                Event = @event;
-            }
+            return EsentEventStream.Get(streamId);
+        }
 
-            public Guid AggregateRootId { get; private set; }
+        protected override void OnEventsCommitted()
+        {  
+        }
 
-            public object Event { get; private set; }
+        protected override void OnEventCommitting(EventContainer eventContainer)
+        {
+            EsentEventStream stream = GetEventStream(eventContainer.AggregateRootId);
+            stream.Add(eventContainer.Event);
+            stream.Commit();
+        }
+
+        public override IEnumerable<object> AllEvents()
+        {
+            throw new NotImplementedException();
         }
     }
 }

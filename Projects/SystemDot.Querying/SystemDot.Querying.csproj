@@ -33,13 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-    <ProjectReference Include="..\SystemDot.EventSourcing\SystemDot.EventSourcing.csproj">
-      <Project>{44526A4F-ABB1-47D4-99A6-3ADF373E09B2}</Project>
-      <Name>SystemDot.EventSourcing</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Configuration\BuilderConfigurationExtensions.cs" />
     <Compile Include="Configuration\IocContainerExtensions.cs" />
     <Compile Include="IdEqualityBase.cs" />
@@ -52,20 +45,53 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SystemDot.Configuration">
-      <HintPath>..\..\Solutions\packages\SystemDot\SystemDot.Configuration.dll</HintPath>
+      <HintPath>..\..\Solutions\packages\SystemDotCore.0.0.2\lib\SystemDot.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="SystemDot.Core">
-      <HintPath>..\..\Solutions\packages\SystemDot\SystemDot.Core.dll</HintPath>
+      <HintPath>..\..\Solutions\packages\SystemDotCore.0.0.2\lib\SystemDot.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SystemDot.Environment">
+      <HintPath>..\..\Solutions\packages\SystemDotCore.0.0.2\lib\SystemDot.Environment.dll</HintPath>
+    </Reference>
+    <Reference Include="SystemDot.Files">
+      <HintPath>..\..\Solutions\packages\SystemDotCore.0.0.2\lib\SystemDot.Files.dll</HintPath>
+    </Reference>
+    <Reference Include="SystemDot.Http">
+      <HintPath>..\..\Solutions\packages\SystemDotCore.0.0.2\lib\SystemDot.Http.dll</HintPath>
     </Reference>
     <Reference Include="SystemDot.Ioc">
-      <HintPath>..\..\Solutions\packages\SystemDot\SystemDot.Ioc.dll</HintPath>
+      <HintPath>..\..\Solutions\packages\SystemDotCore.0.0.2\lib\SystemDot.Ioc.dll</HintPath>
+    </Reference>
+    <Reference Include="SystemDot.Logging">
+      <HintPath>..\..\Solutions\packages\SystemDotCore.0.0.2\lib\SystemDot.Logging.dll</HintPath>
     </Reference>
     <Reference Include="SystemDot.Messaging.Handling">
-      <HintPath>..\..\Solutions\packages\SystemDot\SystemDot.Messaging.Handling.dll</HintPath>
+      <HintPath>..\..\Solutions\packages\SystemDotCore.0.0.2\lib\SystemDot.Messaging.Handling.dll</HintPath>
     </Reference>
     <Reference Include="SystemDot.Messaging.Simple">
-      <HintPath>..\..\Solutions\packages\SystemDot\SystemDot.Messaging.Simple.dll</HintPath>
+      <HintPath>..\..\Solutions\packages\SystemDotCore.0.0.2\lib\SystemDot.Messaging.Simple.dll</HintPath>
     </Reference>
+    <Reference Include="SystemDot.Parallelism">
+      <HintPath>..\..\Solutions\packages\SystemDotCore.0.0.2\lib\SystemDot.Parallelism.dll</HintPath>
+    </Reference>
+    <Reference Include="SystemDot.Serialisation">
+      <HintPath>..\..\Solutions\packages\SystemDotCore.0.0.2\lib\SystemDot.Serialisation.dll</HintPath>
+    </Reference>
+    <Reference Include="SystemDot.Storage">
+      <HintPath>..\..\Solutions\packages\SystemDotCore.0.0.2\lib\SystemDot.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="SystemDot.ThreadMarshalling">
+      <HintPath>..\..\Solutions\packages\SystemDotCore.0.0.2\lib\SystemDot.ThreadMarshalling.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SystemDot.EventSourcing\SystemDot.EventSourcing.csproj">
+      <Project>{44526A4F-ABB1-47D4-99A6-3ADF373E09B2}</Project>
+      <Name>SystemDot.EventSourcing</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

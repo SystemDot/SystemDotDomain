@@ -27,9 +27,9 @@ namespace SystemDot.EventSourcing.Sql.Windows
                 .Select(e => e.Body);
         }
 
-        public IEnumerable<object> GetEvents(Guid aggregateRootId)
+        public IEnumerable<object> GetEvents(Guid streamId)
         {
-            IEventStream stream = GetStream(aggregateRootId);
+            IEventStream stream = GetStream(streamId);
 
             return stream.CommittedEvents.Select(m => m.Body)
                 .Concat(stream.UncommittedEvents.Select(m => m.Body));

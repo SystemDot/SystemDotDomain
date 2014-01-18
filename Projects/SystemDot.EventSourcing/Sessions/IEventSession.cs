@@ -5,7 +5,7 @@ namespace SystemDot.EventSourcing.Sessions
 {
     public interface IEventSession : IDisposable
     {
-        IEnumerable<object> GetEvents(Guid aggregateRootId);
+        IEnumerable<object> GetEvents(Guid streamId);
 
         void StoreEvent(object @event, Guid aggregateRootId, Type aggregateRootType);
 
