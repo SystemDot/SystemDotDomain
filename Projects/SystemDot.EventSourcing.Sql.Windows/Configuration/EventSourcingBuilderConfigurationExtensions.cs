@@ -20,6 +20,7 @@ namespace SystemDot.EventSourcing.Sql.Windows.Configuration
             container.RegisterInstance<IStoreEvents>(() =>
                 Wireup.Init()
                     .UsingSqlPersistence(connectionString)
+                    .PageEvery(int.MaxValue)
                     .InitializeStorageEngine()
                     .UsingJsonSerialization()
                     .UsingSynchronousDispatchScheduler()

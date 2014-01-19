@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using SystemDot.Configuration;
 using SystemDot.Domain.Configuration;
 using SystemDot.EventSourcing.Configuration;
-using SystemDot.EventSourcing.InMemory.Configuration;
+using SystemDot.EventSourcing.Sql.Windows.Configuration;
 using SystemDot.Ioc;
 using SystemDot.Messaging.Simple;
 using SystemDot.Querying;
@@ -26,14 +27,14 @@ namespace Example
                 .ResolveReferencesWith(container)
                 .UseEventSourcing()
                     .DispatchEventUsingSimpleMessaging()
-                    .PersistToMemory()
+                    .PersistToSql("EventStore")
                 .UseDomain()
                 .UseQuerying()
                 .UseTestDomain()
                 .UseTestApp()
                 .Initialise();
 
-            for (int i = 0; i < 100000; i++)
+            for (int i = 0; i < 900000; i++)
                 Messenger.Send(new ActivateVendor { Name = "VendorMan" + i });
 
             container.Resolve<IQueryableRepository>()
