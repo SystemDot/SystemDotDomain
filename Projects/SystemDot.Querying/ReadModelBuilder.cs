@@ -2,7 +2,6 @@
 using SystemDot.EventSourcing;
 using SystemDot.Ioc;
 using SystemDot.Messaging.Handling;
-using SystemDot.Messaging.Simple;
 using SystemDot.Querying.Mapping;
 
 namespace SystemDot.Querying
