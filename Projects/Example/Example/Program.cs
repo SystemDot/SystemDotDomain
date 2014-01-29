@@ -4,6 +4,7 @@ using System.Linq;
 using SystemDot.Configuration;
 using SystemDot.Domain.Configuration;
 using SystemDot.EventSourcing.Configuration;
+using SystemDot.EventSourcing.InMemory.Configuration;
 using SystemDot.EventSourcing.Sql.Windows.Configuration;
 using SystemDot.Ioc;
 using SystemDot.Messaging.Simple;
@@ -27,12 +28,15 @@ namespace Example
                 .ResolveReferencesWith(container)
                 .UseEventSourcing()
                     .DispatchEventUsingSimpleMessaging()
-                    .PersistToSql("EventStore")
+                    .PersistToMemory()
+                    //.PersistToSql("EventStore")
                 .UseDomain()
                 .UseQuerying()
                 .UseTestDomain()
                 .UseTestApp()
                 .Initialise();
+
+            Messenger.RegisterHandler<VendorActivated>(OnVendorActivated);
 
             for (int i = 0; i < 900000; i++)
                 Messenger.Send(new ActivateVendor { Name = "VendorMan" + i });
@@ -44,6 +48,11 @@ namespace Example
 
             Console.WriteLine("Running Test");
             Console.ReadLine();
+        }
+
+        static void OnVendorActivated(VendorActivated obj)
+        {
+            Console.WriteLine("Vendor activated");
         }
     }
 }

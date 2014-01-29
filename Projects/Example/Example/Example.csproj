@@ -134,6 +134,10 @@
       <Project>{d5f19133-3daf-46af-95dd-eb9cf87faafe}</Project>
       <Name>SystemDot.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\SystemDot.EventSourcing.InMemory\SystemDot.EventSourcing.InMemory.csproj">
+      <Project>{3a6b60dd-76f9-4b48-932a-69e9f219ca6e}</Project>
+      <Name>SystemDot.EventSourcing.InMemory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\SystemDot.EventSourcing.Sql.Windows\SystemDot.EventSourcing.Sql.Windows.csproj">
       <Project>{0c2dfc27-3e6b-41d4-9199-a83a6c0d0348}</Project>
       <Name>SystemDot.EventSourcing.Sql.Windows</Name>
