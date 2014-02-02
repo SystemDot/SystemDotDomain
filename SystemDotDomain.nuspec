@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>SystemDotDomain</id>
+        <version>0.9.9</version>
+        <title>SystemDotDomain</title>
+        <authors>Chris Sampson,James Goodenough</authors>
+        <owners>Chris Sampson,James Goodenough</owners>
+        <projectUrl>https://github.com/SystemDot/SystemDotCore</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Domain model infrastructure based on event sourcing for cross platform development on iOS, Android, WinRT and Windows</description>
+        <summary>Domain model infrastructure based on event sourcing for cross platform development on iOS, Android, WinRT and Windows</summary>
+        <copyright>SystemDot 2014</copyright>
+        <language>en-GB</language>
+        <tags>CQRS, Event sourcing, DDD, DDDD, Domain, Cross Platform</tags>
+        <dependencies>
+            <dependency id="SystemDotCore" version="0.9.9" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="Build\SystemDot.Domain.dll" target="lib\MonoAndroid\SystemDot.Domain.dll" />
+        <file src="Build\SystemDot.EventSourcing.dll" target="lib\MonoAndroid\SystemDot.EventSourcing.dll" />
+        <file src="Build\SystemDot.EventSourcing.InMemory.dll" target="lib\MonoAndroid\SystemDot.EventSourcing.InMemory.dll" />
+        <file src="Build\SystemDot.Querying.dll" target="lib\MonoAndroid\SystemDot.Querying.dll" />
+        <file src="Build\SystemDot.Domain.dll" target="lib\net\SystemDot.Domain.dll" />
+        <file src="Build\SystemDot.EventSourcing.dll" target="lib\net\SystemDot.EventSourcing.dll" />
+        <file src="Build\SystemDot.EventSourcing.InMemory.dll" target="lib\net\SystemDot.EventSourcing.InMemory.dll" />
+        <file src="Build\SystemDot.EventSourcing.Sql.Windows.dll" target="lib\net\SystemDot.EventSourcing.Sql.Windows.dll" />
+        <file src="Build\SystemDot.Querying.dll" target="lib\net\SystemDot.Querying.dll" />
+        <file src="Build\SystemDot.Domain.dll" target="lib\netcore\SystemDot.Domain.dll" />
+        <file src="Build\SystemDot.EventSourcing.dll" target="lib\netcore\SystemDot.EventSourcing.dll" />
+        <file src="Build\SystemDot.EventSourcing.InMemory.dll" target="lib\netcore\SystemDot.EventSourcing.InMemory.dll" />
+        <file src="Build\SystemDot.Querying.dll" target="lib\netcore\SystemDot.Querying.dll" />
+        <file src="Build\SystemDot.Domain.dll" target="lib\portable-net4+win8\SystemDot.Domain.dll" />
+        <file src="Build\SystemDot.EventSourcing.dll" target="lib\portable-net4+win8\SystemDot.EventSourcing.dll" />
+        <file src="Build\SystemDot.EventSourcing.InMemory.dll" target="lib\portable-net4+win8\SystemDot.EventSourcing.InMemory.dll" />
+        <file src="Build\SystemDot.Querying.dll" target="lib\portable-net4+win8\SystemDot.Querying.dll" />
+    </files>
+</package>

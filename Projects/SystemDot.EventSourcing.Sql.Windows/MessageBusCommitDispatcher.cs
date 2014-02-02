@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using SystemDot.Core;
+using SystemDot.Core.Collections;
 using SystemDot.EventSourcing.Dispatching;
 using EventStore;
 using EventStore.Dispatcher;

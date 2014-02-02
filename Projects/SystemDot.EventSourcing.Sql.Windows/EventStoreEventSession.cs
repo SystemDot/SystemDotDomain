@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using SystemDot.Core;
+using SystemDot.Core.Collections;
 using SystemDot.EventSourcing.Sessions;
 using EventStore;
 
