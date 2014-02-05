@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using SystemDot.Core;
+using SystemDot.Core.Collections;
 
 namespace SystemDot.Domain.Aggregation
 {

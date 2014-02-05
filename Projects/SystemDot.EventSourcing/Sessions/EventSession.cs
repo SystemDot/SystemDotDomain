@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using SystemDot.Core;
+using SystemDot.Core.Collections;
 using SystemDot.EventSourcing.Dispatching;
 
 namespace SystemDot.EventSourcing.Sessions

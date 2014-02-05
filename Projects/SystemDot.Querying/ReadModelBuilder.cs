@@ -1,4 +1,5 @@
 ﻿using SystemDot.Core;
+using SystemDot.Core.Collections;
 using SystemDot.EventSourcing;
 using SystemDot.Ioc;
 using SystemDot.Messaging.Handling;
