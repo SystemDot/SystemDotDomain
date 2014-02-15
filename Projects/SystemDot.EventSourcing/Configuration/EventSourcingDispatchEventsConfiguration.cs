@@ -1,7 +1,5 @@
 using SystemDot.Configuration;
 using SystemDot.EventSourcing.Dispatching;
-using SystemDot.Messaging.Handling;
-using SystemDot.Messaging.Simple;
 
 namespace SystemDot.EventSourcing.Configuration
 {
@@ -16,7 +14,6 @@ namespace SystemDot.EventSourcing.Configuration
 
         public EventSourcingBuilderConfiguration DispatchEventUsingSimpleMessaging()
         {
-            config.RegisterBuildAction(Messenger.RegisterHandlersFromContainer<IMessageHandler>, BuildOrder.SystemOnlyLast);
             return DispatchEventsWith<MessengerSendEventDispatcher>();
         }
 
