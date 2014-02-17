@@ -2,11 +2,11 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>SystemDotDomain</id>
-        <version>1.0.3</version>
+        <version>1.0.4</version>
         <title>SystemDotDomain</title>
         <authors>Chris Sampson,James Goodenough</authors>
         <owners>Chris Sampson,James Goodenough</owners>
-        <projectUrl>https://github.com/SystemDot/SystemDotCore</projectUrl>
+        <projectUrl>https://github.com/SystemDot/SystemDotDomain</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Domain model infrastructure based on event sourcing for cross platform development on iOS, Android, WinRT and Windows</description>
         <summary>Domain model infrastructure based on event sourcing for cross platform development on iOS, Android, WinRT and Windows</summary>
@@ -22,6 +22,10 @@
         <file src="Build\SystemDot.EventSourcing.dll" target="lib\MonoAndroid\SystemDot.EventSourcing.dll" />
         <file src="Build\SystemDot.EventSourcing.InMemory.dll" target="lib\MonoAndroid\SystemDot.EventSourcing.InMemory.dll" />
         <file src="Build\SystemDot.Querying.dll" target="lib\MonoAndroid\SystemDot.Querying.dll" />
+        <file src="Build\SystemDot.Domain.dll" target="lib\MonoTouch\SystemDot.Domain.dll" />
+        <file src="Build\SystemDot.EventSourcing.dll" target="lib\MonoTouch\SystemDot.EventSourcing.dll" />
+        <file src="Build\SystemDot.EventSourcing.InMemory.dll" target="lib\MonoTouch\SystemDot.EventSourcing.InMemory.dll" />
+        <file src="Build\SystemDot.Querying.dll" target="lib\MonoTouch\SystemDot.Querying.dll" />
         <file src="Build\SystemDot.Domain.dll" target="lib\net\SystemDot.Domain.dll" />
         <file src="Build\SystemDot.EventSourcing.dll" target="lib\net\SystemDot.EventSourcing.dll" />
         <file src="Build\SystemDot.EventSourcing.InMemory.dll" target="lib\net\SystemDot.EventSourcing.InMemory.dll" />
