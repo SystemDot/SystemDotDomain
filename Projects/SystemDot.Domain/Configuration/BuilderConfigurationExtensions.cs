@@ -1,12 +1,11 @@
-﻿using SystemDot.Configuration;
+using SystemDot.Configuration;
 
 namespace SystemDot.Domain.Configuration
 {
     public static class BuilderConfigurationExtensions
     {
-        public static IBuilderConfiguration UseDomain(this IBuilderConfiguration config)
+        public static BuilderConfiguration UseDomain(this BuilderConfiguration config)
         {
-            config.RegisterBuildAction(c => c.RegisterDomain());
             return config;
         }
     }

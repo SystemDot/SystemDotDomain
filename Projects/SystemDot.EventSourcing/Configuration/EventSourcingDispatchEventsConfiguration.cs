@@ -5,9 +5,9 @@ namespace SystemDot.EventSourcing.Configuration
 {
     public class EventSourcingDispatchEventsConfiguration
     {
-        readonly IBuilderConfiguration config;
+        readonly BuilderConfiguration config;
 
-        public EventSourcingDispatchEventsConfiguration(IBuilderConfiguration config)
+        public EventSourcingDispatchEventsConfiguration(BuilderConfiguration config)
         {
             this.config = config;
         }

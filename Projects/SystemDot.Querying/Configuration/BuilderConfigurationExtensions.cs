@@ -1,13 +1,11 @@
-﻿using SystemDot.Configuration;
+using SystemDot.Configuration;
 
 namespace SystemDot.Querying.Configuration
 {
     public static class BuilderConfigurationExtensions
     {
-        public static IBuilderConfiguration UseQuerying(this IBuilderConfiguration config)
+        public static BuilderConfiguration UseQuerying(this BuilderConfiguration config)
         {
-            config.RegisterBuildAction(c => c.RegisterQuerying());
-            config.RegisterBuildAction(c => c.ResolveReadModelBuilder().Build(), BuildOrder.SystemOnlyLast);
             return config;
         }
     }

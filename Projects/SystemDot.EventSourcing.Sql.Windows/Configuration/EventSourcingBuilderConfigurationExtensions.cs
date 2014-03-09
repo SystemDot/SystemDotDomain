@@ -8,7 +8,7 @@ namespace SystemDot.EventSourcing.Sql.Windows.Configuration
 {
     public static class EventSourcingBuilderConfigurationExtensions
     {
-        public static IBuilderConfiguration PersistToSql(this EventSourcingBuilderConfiguration config, string connectionString)
+        public static BuilderConfiguration PersistToSql(this EventSourcingBuilderConfiguration config, string connectionString)
         {
             config.GetBuilderConfiguration().RegisterBuildAction(c => c.RegisterSqlWindowsEventSourcing());
             config.GetBuilderConfiguration().RegisterBuildAction(c => Build(c, connectionString));

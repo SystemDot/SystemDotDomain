@@ -4,14 +4,14 @@ namespace SystemDot.EventSourcing.Configuration
 {
     public class EventSourcingBuilderConfiguration
     {
-        readonly IBuilderConfiguration config;
+        readonly BuilderConfiguration config;
 
-        public EventSourcingBuilderConfiguration(IBuilderConfiguration config)
+        public EventSourcingBuilderConfiguration(BuilderConfiguration config)
         {
             this.config = config;
         }
 
-        public IBuilderConfiguration GetBuilderConfiguration()
+        public BuilderConfiguration GetBuilderConfiguration()
         {
             return config;
         }

@@ -37,7 +37,7 @@
   <ItemGroup>
     <Compile Include="ActivateVendor.cs" />
     <Compile Include="ActivateVendorCommandHandler.cs" />
-    <Compile Include="Configuration\BuilderConfigurationExtensions.cs" />
+    <Compile Include="Configuration\ConfigurationBuilderComponent.cs" />
     <Compile Include="Configuration\IocContainerExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vendor.cs" />
@@ -56,6 +56,9 @@
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\Solutions\packages\Newtonsoft.Json.6.0.1\lib\portable-net40+sl5+wp80+win8+monotouch+monoandroid\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SystemDot">
+      <HintPath>..\..\..\Solutions\packages\SystemDotCore.1.1.7\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

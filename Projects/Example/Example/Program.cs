@@ -30,10 +30,6 @@ namespace Example
                     .DispatchEventUsingSimpleMessaging()
                     .PersistToMemory()
                     //.PersistToSql("EventStore")
-                .UseDomain()
-                .UseQuerying()
-                .UseTestDomain()
-                .UseTestApp()
                 .Initialise();
 
             token = Messenger.RegisterHandler<VendorActivated>(OnVendorActivated);
