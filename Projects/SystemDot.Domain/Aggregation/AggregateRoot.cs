@@ -29,6 +29,13 @@ namespace SystemDot.Domain.Aggregation
             EventSessionProvider.Session.StoreEvent(@event, Id, GetType());
         }
 
+        protected internal void AddEvent<T>(Action<T> initaliseEvent) where T : new()
+        {
+            var @event = new T();
+            initaliseEvent(@event);
+            AddEvent(@event);
+        }
+
         public void ReplayEvent(object toReplay)
         {
             this.eventRouter.RouteEventToHandlers(toReplay);

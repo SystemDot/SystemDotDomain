@@ -1,3 +1,5 @@
+using System;
+
 namespace SystemDot.Domain.Aggregation
 {
     public abstract class AggregateEntity<TRoot> where TRoot : AggregateRoot
@@ -10,12 +12,17 @@ namespace SystemDot.Domain.Aggregation
         {
             Root = root;
             Root.EventReplayed += OnAggregateRootEventAdded;
-            this.eventRouter = new ConventionEventToHandlerRouter(this, "ApplyEvent");
+            eventRouter = new ConventionEventToHandlerRouter(this, "ApplyEvent");
         }
 
         protected void AddEvent(object @event)
         {
             Root.AddEvent(@event);
+        }
+
+        protected void AddEvent<T>(Action<T> initaliseEvent) where T : new()
+        {
+            Root.AddEvent(initaliseEvent);
         }
 
         void OnAggregateRootEventAdded(object sender, EventSourceEventArgs e)
