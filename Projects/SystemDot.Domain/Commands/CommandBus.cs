@@ -1,15 +1,18 @@
 using System;
 using SystemDot.EventSourcing.Sessions;
+using SystemDot.Messaging;
 using SystemDot.Messaging.Simple;
 
 namespace SystemDot.Domain.Commands
 {
     public class CommandBus : ICommandBus
     {
+        readonly IBus bus;
         readonly IEventSessionFactory eventSessionFactory;
 
-        protected CommandBus(IEventSessionFactory eventSessionFactory)
+        protected CommandBus(IBus bus, IEventSessionFactory eventSessionFactory)
         {
+            this.bus = bus;
             this.eventSessionFactory = eventSessionFactory;
         }
 
@@ -24,7 +27,7 @@ namespace SystemDot.Domain.Commands
         {
             using (var session = eventSessionFactory.Create())
             {
-                Messenger.Send(command);
+                bus.Send(command);
                 session.Commit(Guid.Empty);
             }   
         }

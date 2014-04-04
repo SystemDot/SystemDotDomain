@@ -7,12 +7,9 @@ using SystemDot.EventSourcing.InMemory.Configuration;
 using SystemDot.Ioc;
 using SystemDot.Messaging.Handling.Actions;
 using SystemDot.Messaging.Simple;
-using SystemDot.Querying.Configuration;
 using SystemDot.Querying.Repositories;
 using App;
-using App.Configuration;
 using Domain;
-using Domain.Configuration;
 
 namespace Example
 {
@@ -26,8 +23,9 @@ namespace Example
 
             Configure.SystemDot()
                 .ResolveReferencesWith(container)
+                .UseDomain()
+                    .WithSimpleMessaging()
                 .UseEventSourcing()
-                    .DispatchEventUsingSimpleMessaging()
                     .PersistToMemory()
                     //.PersistToSql("EventStore")
                 .Initialise();

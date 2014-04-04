@@ -4,9 +4,9 @@ namespace SystemDot.Domain.Configuration
 {
     public static class BuilderConfigurationExtensions
     {
-        public static BuilderConfiguration UseDomain(this BuilderConfiguration config)
+        public static SimpleMessagingBuilderConfiguration UseDomain(this BuilderConfiguration config)
         {
-            return config;
+            return new SimpleMessagingBuilderConfiguration(config);
         }
     }
 }

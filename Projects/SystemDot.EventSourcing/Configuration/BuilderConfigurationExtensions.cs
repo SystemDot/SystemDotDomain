@@ -4,9 +4,9 @@ namespace SystemDot.EventSourcing.Configuration
 {
     public static class BuilderConfigurationExtensions
     {
-        public static EventSourcingDispatchEventsConfiguration UseEventSourcing(this BuilderConfiguration config)
+        public static EventSourcingBuilderConfiguration UseEventSourcing(this BuilderConfiguration config)
         {
-            return new EventSourcingDispatchEventsConfiguration(config);
+            return new EventSourcingBuilderConfiguration(config);
         }
     }
 }
