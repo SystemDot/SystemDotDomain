@@ -13,7 +13,7 @@ namespace SystemDot.EventSourcing
             this.factory = factory;
         }
 
-        public List<object> GetAllEvents()
+        public IEnumerable<SourcedEvent> GetAllEvents()
         {
             return factory.Create().AllEvents().ToList();
         }

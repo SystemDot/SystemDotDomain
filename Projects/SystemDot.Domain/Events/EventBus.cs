@@ -21,7 +21,7 @@ namespace SystemDot.Domain.Events
 
         public void PublishEvent<T>(T @event)
         {
-            bus.PublishEvent(@event);
+            bus.Publish(@event);
         }
     }
 }

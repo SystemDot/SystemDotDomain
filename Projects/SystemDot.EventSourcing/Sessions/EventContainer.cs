@@ -4,7 +4,7 @@ namespace SystemDot.EventSourcing.Sessions
 {
     public class EventContainer
     {
-        public EventContainer(Guid aggregateRootId, object @event)
+        public EventContainer(Guid aggregateRootId, SourcedEvent @event)
         {
             AggregateRootId = aggregateRootId;
             Event = @event;
@@ -12,6 +12,6 @@ namespace SystemDot.EventSourcing.Sessions
 
         public Guid AggregateRootId { get; private set; }
 
-        public object Event { get; private set; }
+        public SourcedEvent Event { get; private set; }
     }
 }

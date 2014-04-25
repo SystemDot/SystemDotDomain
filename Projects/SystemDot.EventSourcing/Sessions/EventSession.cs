@@ -17,9 +17,9 @@ namespace SystemDot.EventSourcing.Sessions
             eventsToCommit = new List<EventContainer>();
         }
 
-        public abstract IEnumerable<object> GetEvents(Guid streamId);
-        
-        public void StoreEvent(object @event, Guid aggregateRootId, Type aggregateRootType)
+        public abstract IEnumerable<SourcedEvent> GetEvents(Guid streamId);
+
+        public void StoreEvent(SourcedEvent @event, Guid aggregateRootId)
         {
             eventsToCommit.Add(new EventContainer(aggregateRootId, @event));
         }
@@ -41,6 +41,6 @@ namespace SystemDot.EventSourcing.Sessions
 
         protected abstract void OnEventCommitting(EventContainer eventContainer);
 
-        public abstract IEnumerable<object> AllEvents();
+        public abstract IEnumerable<SourcedEvent> AllEvents();
     }
 }

@@ -19,27 +19,43 @@ namespace SystemDot.EventSourcing.Sql.Windows
             streams = new Dictionary<Guid, IEventStream>();
         }
 
-        public IEnumerable<object> AllEvents()
+        public IEnumerable<SourcedEvent> AllEvents()
         {
             return eventStore
                 .Advanced
                 .GetFrom(DateTime.MinValue)
                 .SelectMany(e => e.Events)
-                .Select(e => e.Body);
+                .Select(CreateSourcedEvent);
         }
 
-        public IEnumerable<object> GetEvents(Guid streamId)
+        public IEnumerable<SourcedEvent> GetEvents(Guid streamId)
         {
             IEventStream stream = GetStream(streamId);
 
-            return stream.CommittedEvents.Select(m => m.Body)
-                .Concat(stream.UncommittedEvents.Select(m => m.Body));
+            return stream.CommittedEvents.Select(CreateSourcedEvent)
+                .Concat(stream.UncommittedEvents.Select(CreateSourcedEvent));
         }
 
-        public void StoreEvent(object @event, Guid aggregateRootId, Type aggregateRootType)
+        SourcedEvent CreateSourcedEvent(EventMessage @from)
         {
-            var uncommittedEvent = new EventMessage {Body = @event};
-            uncommittedEvent.Headers.Add(EventHeaderKeys.AggregateType, aggregateRootType.FullName);
+            var @event = new SourcedEvent
+            {
+                Body = @from.Body
+            };
+
+            @from.Headers.ForEach(h => @event.Headers.Add(h.Key, h.Value));
+
+            return @event;
+        }
+
+        public void StoreEvent(SourcedEvent @event, Guid aggregateRootId)
+        {
+            var uncommittedEvent = new EventMessage
+            {
+                Body = @event.Body
+            };
+
+            @event.Headers.ForEach(h => uncommittedEvent.Headers.Add(h.Key, h.Value));
 
             GetStream(aggregateRootId).Add(uncommittedEvent);
         }

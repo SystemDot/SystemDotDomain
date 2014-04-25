@@ -25,8 +25,19 @@ namespace SystemDot.Domain.Aggregation
         protected internal void AddEvent(object @event)
         {
             ReplayEvent(@event);
+            EventSessionProvider.Session.StoreEvent(CreateSourcedEvent(@event), Id);
+        }
 
-            EventSessionProvider.Session.StoreEvent(@event, Id, GetType());
+        SourcedEvent CreateSourcedEvent(object body)
+        {
+            var sourcedEvent = new SourcedEvent
+            {
+                Body = body
+            };
+
+            sourcedEvent.AddHeader(EventHeaderKeys.AggregateType, GetType());
+
+            return sourcedEvent;
         }
 
         protected internal void AddEvent<T>(Action<T> initaliseEvent) where T : new()

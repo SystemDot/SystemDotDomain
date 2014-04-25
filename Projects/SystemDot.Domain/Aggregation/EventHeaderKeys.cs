@@ -1,4 +1,4 @@
-namespace SystemDot.EventSourcing.Sql.Windows
+namespace SystemDot.Domain.Aggregation
 {
     public static class EventHeaderKeys
     {
