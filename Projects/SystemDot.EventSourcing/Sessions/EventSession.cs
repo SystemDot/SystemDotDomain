@@ -33,7 +33,7 @@ namespace SystemDot.EventSourcing.Sessions
 
         void CommitEvent(EventContainer @event)
         {
-            eventDispatcher.Dispatch(@event.Event);
+            eventDispatcher.Dispatch(@event.Event.Body);
             OnEventCommitting(@event);
         }
 

@@ -1,7 +1,6 @@
 using System;
 using SystemDot.EventSourcing.Sessions;
 using SystemDot.Messaging;
-using SystemDot.Messaging.Simple;
 
 namespace SystemDot.Domain.Commands
 {

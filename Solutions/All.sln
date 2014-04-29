@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.EventSourcing", "..\Projects\SystemDot.EventSourcing\SystemDot.EventSourcing.csproj", "{44526A4F-ABB1-47D4-99A6-3ADF373E09B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.EventSourcing.InMemory", "..\Projects\SystemDot.EventSourcing.InMemory\SystemDot.EventSourcing.InMemory.csproj", "{3A6B60DD-76F9-4B48-932A-69E9F219CA6E}"
@@ -25,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{044CC2
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.Domain.Specifications", "..\Projects\SystemDot.Domain.Specifications\SystemDot.Domain.Specifications.csproj", "{222E0EC1-3438-46E3-B5E4-BB5316C8BFB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,6 +68,10 @@ Global
 		{F5B17B9B-982B-45E3-A600-140F332859C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5B17B9B-982B-45E3-A600-140F332859C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5B17B9B-982B-45E3-A600-140F332859C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{222E0EC1-3438-46E3-B5E4-BB5316C8BFB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{222E0EC1-3438-46E3-B5E4-BB5316C8BFB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{222E0EC1-3438-46E3-B5E4-BB5316C8BFB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{222E0EC1-3438-46E3-B5E4-BB5316C8BFB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
