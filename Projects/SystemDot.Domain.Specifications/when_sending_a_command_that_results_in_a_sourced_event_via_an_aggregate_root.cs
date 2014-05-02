@@ -33,6 +33,7 @@ namespace SystemDot.Domain.Specifications
                 .Initialise();
 
             commandBus = container.Resolve<ICommandBus>();
+
             Messenger.RegisterHandler<TestAggregateRootCreatedEvent>(e => handledEvent = e);
         };
 

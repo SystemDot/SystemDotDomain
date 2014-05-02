@@ -5,9 +5,11 @@ namespace SystemDot.Domain.Specifications
 {
     public class TestAggregateRoot : AggregateRoot
     {
-        public static void Create(Guid id)
+        public bool State { private set; get; }
+
+        public static TestAggregateRoot Create(Guid id)
         {
-            new TestAggregateRoot(id);
+            return new TestAggregateRoot(id);
         }
 
         TestAggregateRoot(Guid id) : base(id)
@@ -18,5 +20,19 @@ namespace SystemDot.Domain.Specifications
         public TestAggregateRoot()
         {
         }
+
+        public void SetSomeMoreStateResultingInEvent()
+        {
+            AddEvent(new TestAggregateRootStateEvent());
+        }
+
+        void ApplyEvent(TestAggregateRootStateEvent @event)
+        {
+            State = true;
+        }
+    }
+
+    public class TestAggregateRootStateEvent
+    {
     }
 }

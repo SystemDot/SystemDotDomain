@@ -53,7 +53,10 @@ namespace SystemDot.Domain
             where TAggregateRoot : AggregateRoot, new()
         {
             AggregateRoot.SetId(aggregateRoot, aggregateRootId);
-            events.ForEach(aggregateRoot.ReplayEvent);
+
+            events
+                .Select(e => e.Body)
+                .ForEach(aggregateRoot.ReplayEvent);
         }
     }
 }
