@@ -29,7 +29,7 @@ namespace SystemDot.Querying.Repositories
             return entities.Values.OfType<T>().ToList().AsQueryable();
         }
 
-        public T GetById<T>(Guid id) where T : IdEqualityBase<T>
+        public T GetById<T>(string id) where T : IdEqualityBase<T>
         {
             return entities.Values.OfType<T>().SingleOrDefault(x => x.Id == id);
         }

@@ -17,10 +17,10 @@ namespace Domain
         {
             using (var session = eventSessionFactory.Create())
             {
-                var v = new Vendor(Guid.NewGuid());
+                var v = new Vendor(Guid.NewGuid().ToString());
                 v.Activate(command.Name);
 
-                session.Commit(Guid.NewGuid());
+                session.Commit();
             }
         }
     }

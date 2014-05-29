@@ -5,9 +5,9 @@ namespace SystemDot.Domain
 {
     public interface IDomainRepository
     {
-        TAggregateRoot Get<TAggregateRoot>(Guid aggregateRootId) 
+        TAggregateRoot Get<TAggregateRoot>(string aggregateRootId) 
             where TAggregateRoot : AggregateRoot, new();
 
-        bool Exists(Guid aggregateRootId);
+        bool Exists(string aggregateRootId);
     }
 }

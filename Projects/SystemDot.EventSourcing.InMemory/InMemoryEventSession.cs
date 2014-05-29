@@ -15,7 +15,7 @@ namespace SystemDot.EventSourcing.InMemory
             events = new List<EventContainer>();
         }
 
-        public override IEnumerable<SourcedEvent> GetEvents(Guid streamId)
+        public override IEnumerable<SourcedEvent> GetEvents(string streamId)
         {
             return events
                 .Where(e => e.AggregateRootId == streamId)

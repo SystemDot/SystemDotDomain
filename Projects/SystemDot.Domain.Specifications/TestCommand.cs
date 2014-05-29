@@ -4,6 +4,6 @@ namespace SystemDot.Domain.Specifications
 {
     public class TestCommand
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
     }
 }

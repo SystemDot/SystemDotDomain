@@ -28,9 +28,9 @@ namespace SystemDot.EventSourcing.Sql.Windows
                 .Select(CreateSourcedEvent);
         }
 
-        public IEnumerable<SourcedEvent> GetEvents(Guid streamId)
+        public IEnumerable<SourcedEvent> GetEvents(string streamId)
         {
-            IEventStream stream = GetStream(streamId);
+            IEventStream stream = GetStream(GetInternalAggregateRootId(streamId));
 
             return stream.CommittedEvents.Select(CreateSourcedEvent)
                 .Concat(stream.UncommittedEvents.Select(CreateSourcedEvent));
@@ -48,7 +48,7 @@ namespace SystemDot.EventSourcing.Sql.Windows
             return @event;
         }
 
-        public void StoreEvent(SourcedEvent @event, Guid aggregateRootId)
+        public void StoreEvent(SourcedEvent @event, string aggregateRootId)
         {
             var uncommittedEvent = new EventMessage
             {
@@ -57,12 +57,17 @@ namespace SystemDot.EventSourcing.Sql.Windows
 
             @event.Headers.ForEach(h => uncommittedEvent.Headers.Add(h.Key, h.Value));
 
-            GetStream(aggregateRootId).Add(uncommittedEvent);
+            GetStream(GetInternalAggregateRootId(aggregateRootId)).Add(uncommittedEvent);
         }
 
-        public void Commit(Guid commandId)
+        static Guid GetInternalAggregateRootId(string aggregateRootId)
         {
-            streams.ForEach(s => CommitStream(commandId, s.Value));
+            throw new NotFiniteNumberException();
+        }
+
+        public void Commit()
+        {
+            streams.ForEach(s => CommitStream(Guid.NewGuid(), s.Value));
         }
 
         IEventStream GetStream(Guid aggregateRootId)

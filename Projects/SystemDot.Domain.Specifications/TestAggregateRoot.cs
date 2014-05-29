@@ -7,12 +7,12 @@ namespace SystemDot.Domain.Specifications
     {
         public bool State { private set; get; }
 
-        public static TestAggregateRoot Create(Guid id)
+        public static TestAggregateRoot Create(string id)
         {
             return new TestAggregateRoot(id);
         }
 
-        TestAggregateRoot(Guid id) : base(id)
+        TestAggregateRoot(string id) : base(id)
         {
             AddEvent<TestAggregateRootCreatedEvent>(c => c.Id = id);
         }

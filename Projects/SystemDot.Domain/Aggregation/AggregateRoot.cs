@@ -10,14 +10,14 @@ namespace SystemDot.Domain.Aggregation
         
         readonly ConventionEventToHandlerRouter eventRouter;
 
-        public Guid Id { get; private set; }
+        public string Id { get; private set; }
 
         protected AggregateRoot()
         {
-            this.eventRouter = new ConventionEventToHandlerRouter(this, "ApplyEvent");
+            eventRouter = new ConventionEventToHandlerRouter(this, "ApplyEvent");
         }
 
-        protected AggregateRoot(Guid id) : this()
+        protected AggregateRoot(string id) : this()
         {
             Id = id;
         }
@@ -49,7 +49,7 @@ namespace SystemDot.Domain.Aggregation
 
         public void ReplayEvent(object toReplay)
         {
-            this.eventRouter.RouteEventToHandlers(toReplay);
+            eventRouter.RouteEventToHandlers(toReplay);
 
             OnEventReplayed(toReplay);
         }
@@ -62,7 +62,7 @@ namespace SystemDot.Domain.Aggregation
             }
         }
 
-        internal static void SetId(AggregateRoot aggregateRoot, Guid id)
+        internal static void SetId(AggregateRoot aggregateRoot, string id)
         {
             aggregateRoot.Id = id;
         }

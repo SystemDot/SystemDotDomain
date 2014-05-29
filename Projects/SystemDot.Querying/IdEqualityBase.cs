@@ -4,7 +4,7 @@ namespace SystemDot.Querying
 {
     public abstract class IdEqualityBase<T> : IEquatable<T> where T : IdEqualityBase<T>
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         public bool Equals(T other)
         {

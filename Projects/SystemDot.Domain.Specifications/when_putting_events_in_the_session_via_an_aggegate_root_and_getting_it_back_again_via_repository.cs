@@ -11,7 +11,8 @@ namespace SystemDot.Domain.Specifications
 {
     public class when_putting_events_in_the_session_via_an_aggegate_root_and_getting_it_back_again_via_repository
     {
-        static readonly Guid Id = Guid.NewGuid();
+        const string Id = "Id";
+
         static IDomainRepository repository;
         static TestAggregateRoot root;
         static IEventSessionFactory eventSessionFactory;
@@ -33,7 +34,7 @@ namespace SystemDot.Domain.Specifications
             {
                 var root = TestAggregateRoot.Create(Id);
                 root.SetSomeMoreStateResultingInEvent();
-                session.Commit(Guid.Empty);
+                session.Commit();
             }   
         };
 

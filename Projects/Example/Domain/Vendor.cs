@@ -9,7 +9,7 @@ namespace Domain
         {
         }
 
-        public Vendor(Guid id) : base(id)
+        public Vendor(string id) : base(id)
         {
         }
 

@@ -27,7 +27,7 @@ namespace SystemDot.Domain.Commands
             using (var session = eventSessionFactory.Create())
             {
                 bus.Send(command);
-                session.Commit(Guid.Empty);
+                session.Commit();
             }   
         }
     }

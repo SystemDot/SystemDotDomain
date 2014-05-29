@@ -17,14 +17,14 @@ namespace SystemDot.EventSourcing.Sessions
             eventsToCommit = new List<EventContainer>();
         }
 
-        public abstract IEnumerable<SourcedEvent> GetEvents(Guid streamId);
+        public abstract IEnumerable<SourcedEvent> GetEvents(string streamId);
 
-        public void StoreEvent(SourcedEvent @event, Guid aggregateRootId)
+        public void StoreEvent(SourcedEvent @event, string aggregateRootId)
         {
             eventsToCommit.Add(new EventContainer(aggregateRootId, @event));
         }
 
-        public void Commit(Guid commandId)
+        public void Commit()
         {
             eventsToCommit.ForEach(CommitEvent);
             OnEventsCommitted();

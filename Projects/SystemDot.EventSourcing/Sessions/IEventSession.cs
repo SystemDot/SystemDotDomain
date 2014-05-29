@@ -5,11 +5,11 @@ namespace SystemDot.EventSourcing.Sessions
 {
     public interface IEventSession : IDisposable
     {
-        IEnumerable<SourcedEvent> GetEvents(Guid streamId);
+        IEnumerable<SourcedEvent> GetEvents(string streamId);
 
-        void StoreEvent(SourcedEvent @event, Guid aggregateRootId);
+        void StoreEvent(SourcedEvent @event, string aggregateRootId);
 
-        void Commit(Guid commandId);
+        void Commit();
 
         IEnumerable<SourcedEvent> AllEvents();
     }

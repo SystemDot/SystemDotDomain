@@ -4,13 +4,13 @@ namespace SystemDot.EventSourcing.Sessions
 {
     public class EventContainer
     {
-        public EventContainer(Guid aggregateRootId, SourcedEvent @event)
+        public EventContainer(string aggregateRootId, SourcedEvent @event)
         {
             AggregateRootId = aggregateRootId;
             Event = @event;
         }
 
-        public Guid AggregateRootId { get; private set; }
+        public string AggregateRootId { get; private set; }
 
         public SourcedEvent Event { get; private set; }
     }

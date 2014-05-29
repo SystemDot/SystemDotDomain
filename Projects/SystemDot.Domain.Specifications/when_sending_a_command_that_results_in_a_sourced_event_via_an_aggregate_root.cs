@@ -19,7 +19,7 @@ namespace SystemDot.Domain.Specifications
     {
         static TestAggregateRootCreatedEvent handledEvent; 
         static ICommandBus commandBus;
-        static readonly Guid Id = Guid.NewGuid();
+        const string Id = "Id";
 
         Establish context = () =>
         {
