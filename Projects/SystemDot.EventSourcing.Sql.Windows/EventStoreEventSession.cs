@@ -4,6 +4,7 @@ using System.Linq;
 using SystemDot.Core;
 using SystemDot.Core.Collections;
 using SystemDot.EventSourcing.Sessions;
+using SystemDot.EventSourcing.Sql.Windows.Lookups;
 using EventStore;
 
 namespace SystemDot.EventSourcing.Sql.Windows
@@ -11,11 +12,13 @@ namespace SystemDot.EventSourcing.Sql.Windows
     public class EventStoreEventSession : Disposable, IEventSession
     {
         readonly IStoreEvents eventStore;
+        readonly IAggregateLookup lookup;
         readonly Dictionary<Guid, IEventStream> streams;
 
-        public EventStoreEventSession(IStoreEvents eventStore)
+        public EventStoreEventSession(IStoreEvents eventStore, IAggregateLookup lookup)
         {
             this.eventStore = eventStore;
+            this.lookup = lookup;
             streams = new Dictionary<Guid, IEventStream>();
         }
 
@@ -60,9 +63,9 @@ namespace SystemDot.EventSourcing.Sql.Windows
             GetStream(GetInternalAggregateRootId(aggregateRootId)).Add(uncommittedEvent);
         }
 
-        static Guid GetInternalAggregateRootId(string aggregateRootId)
+        Guid GetInternalAggregateRootId(string aggregateRootId)
         {
-            throw new NotFiniteNumberException();
+            return lookup.LookupId<string>(aggregateRootId);
         }
 
         public void Commit()

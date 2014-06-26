@@ -1,4 +1,5 @@
-﻿using SystemDot.Ioc;
+﻿using SystemDot.EventSourcing.Sql.Windows.Lookups;
+using SystemDot.Ioc;
 
 namespace SystemDot.EventSourcing.Sql.Windows.Configuration
 {
@@ -6,6 +7,7 @@ namespace SystemDot.EventSourcing.Sql.Windows.Configuration
     {
         internal static void RegisterSqlWindowsEventSourcing(this IIocContainer container)
         {
+            container.RegisterInstance<ILookupIdCache, LookupIdCache>();
             container.RegisterFromAssemblyOf<EventStoreEventSession>();
         }
     }
