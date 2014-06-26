@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>SystemDotDomain</id>
-        <version>1.2.6</version>
+        <version>1.2.7</version>
         <title>SystemDotDomain</title>
         <authors>Chris Sampson,James Goodenough</authors>
         <owners>Chris Sampson,James Goodenough</owners>
@@ -30,6 +30,8 @@
         <file src="Build\SystemDot.EventSourcing.dll" target="lib\net\SystemDot.EventSourcing.dll" />
         <file src="Build\SystemDot.EventSourcing.InMemory.dll" target="lib\net\SystemDot.EventSourcing.InMemory.dll" />
         <file src="Build\SystemDot.EventSourcing.Sql.Windows.dll" target="lib\net\SystemDot.EventSourcing.Sql.Windows.dll" />
+        <file src="Build\EventStore.dll" target="lib\net\EventStore.dll" />
+        <file src="Build\EventStore.Serialization.Json.dll" target="lib\net\EventStore.Serialization.Json.dll" />
         <file src="Build\SystemDot.Querying.dll" target="lib\net\SystemDot.Querying.dll" />
         <file src="Build\SystemDot.Domain.dll" target="lib\netcore\SystemDot.Domain.dll" />
         <file src="Build\SystemDot.EventSourcing.dll" target="lib\netcore\SystemDot.EventSourcing.dll" />

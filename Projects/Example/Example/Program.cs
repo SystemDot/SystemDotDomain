@@ -4,6 +4,7 @@ using SystemDot.Configuration;
 using SystemDot.Domain.Configuration;
 using SystemDot.EventSourcing.Configuration;
 using SystemDot.EventSourcing.InMemory.Configuration;
+using SystemDot.EventSourcing.Sql.Windows.Configuration;
 using SystemDot.Ioc;
 using SystemDot.Messaging.Handling.Actions;
 using SystemDot.Messaging.Simple;
@@ -26,8 +27,8 @@ namespace Example
                 .UseDomain()
                     .WithSimpleMessaging()
                 .UseEventSourcing()
-                    .PersistToMemory()
-                    //.PersistToSql("EventStore")
+                    //.PersistToMemory()
+                    .PersistToSql("EventStore")
                 .Initialise();
 
             token = Messenger.RegisterHandler<VendorActivated>(OnVendorActivated);
