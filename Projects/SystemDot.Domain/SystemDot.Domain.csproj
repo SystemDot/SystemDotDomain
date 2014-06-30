@@ -53,6 +53,9 @@
     <Compile Include="Events\EventDispatcher.cs" />
     <Compile Include="Events\IEventBus.cs" />
     <Compile Include="IDomainRepository.cs" />
+    <Compile Include="Projections\IInMemoryProjection.cs" />
+    <Compile Include="Projections\InMemoryProjectionHydrater.cs" />
+    <Compile Include="Projections\IocContainerExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -3,7 +3,6 @@ using System.Linq;
 using SystemDot.Configuration;
 using SystemDot.Domain.Configuration;
 using SystemDot.EventSourcing.Configuration;
-using SystemDot.EventSourcing.InMemory.Configuration;
 using SystemDot.EventSourcing.Sql.Windows.Configuration;
 using SystemDot.Ioc;
 using SystemDot.Messaging.Handling.Actions;
