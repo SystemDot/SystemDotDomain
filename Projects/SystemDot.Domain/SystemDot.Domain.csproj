@@ -45,6 +45,7 @@
     <Compile Include="Commands\CommandBus.cs" />
     <Compile Include="Commands\ICommandBus.cs" />
     <Compile Include="Commands\ICommandHandler.cs" />
+    <Compile Include="Commands\ObjectExtensions.cs" />
     <Compile Include="Configuration\BuilderConfigurationExtensions.cs" />
     <Compile Include="Configuration\ConfigurationBuilderComponent.cs" />
     <Compile Include="Configuration\SimpleMessagingBuilderConfiguration.cs" />
