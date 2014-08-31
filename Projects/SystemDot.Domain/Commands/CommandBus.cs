@@ -1,6 +1,7 @@
 using System;
 using SystemDot.EventSourcing.Sessions;
 using SystemDot.Messaging;
+using SystemDot.Messaging.Handling.Actions;
 
 namespace SystemDot.Domain.Commands
 {
@@ -29,6 +30,16 @@ namespace SystemDot.Domain.Commands
                 bus.Send(command);
                 session.Commit();
             }   
+        }
+
+        public void RequestAndHandleReply<TRequest, TResponse>(TRequest request, Action<TResponse> responseHandler)
+        {
+            bus.Send(request, responseHandler);
+        }
+
+        public ActionSubscriptionToken<TMessage> RegisterHandler<TMessage>(Action<TMessage> toRegister)
+        {
+            return bus.RegisterHandler(toRegister);
         }
     }
 }
