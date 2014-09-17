@@ -1,27 +1,15 @@
 ﻿using System;
+using System.Threading.Tasks;
 using SystemDot.Domain.Commands;
-using SystemDot.EventSourcing.Sessions;
 
 namespace Domain
 {
-    public class ActivateVendorCommandHandler : ICommandHandler<ActivateVendor>
+    public class ActivateVendorCommandHandler : IAsyncCommandHandler<ActivateVendor>
     {
-        readonly IEventSessionFactory eventSessionFactory;
-
-        public ActivateVendorCommandHandler(IEventSessionFactory eventSessionFactory)
+        public async Task Handle(ActivateVendor command)
         {
-            this.eventSessionFactory = eventSessionFactory;
-        }
-
-        public void Handle(ActivateVendor command)
-        {
-            using (var session = eventSessionFactory.Create())
-            {
-                var v = new Vendor(Guid.NewGuid().ToString());
-                v.Activate(command.Name);
-
-                session.Commit();
-            }
+            var v = new Vendor(Guid.NewGuid().ToString());
+            v.Activate(command.Name);
         }
     }
 }

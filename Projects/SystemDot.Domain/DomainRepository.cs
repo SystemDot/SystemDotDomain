@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using SystemDot.Core.Collections;
 using SystemDot.Domain.Aggregation;
 using SystemDot.EventSourcing.Sessions;
@@ -9,15 +10,16 @@ namespace SystemDot.Domain
 {
     public class DomainRepository : IDomainRepository
     {
-        public bool Exists(string aggregateRootId)
+        public async Task<bool> ExistsAsync(string aggregateRootId)
         {
-            return GetEvents(aggregateRootId).Any();
+            IEnumerable<SourcedEvent> events = await GetEventsAsync(aggregateRootId);
+            return events.Any();
         }
 
-        public TAggregateRoot Get<TAggregateRoot>(string aggregateRootId)
+        public async Task<TAggregateRoot> GetAsync<TAggregateRoot>(string aggregateRootId)
             where TAggregateRoot : AggregateRoot, new()
         {
-            List<SourcedEvent> events = GetEvents(aggregateRootId).ToList();
+            List<SourcedEvent> events = await GetEventsAsync(aggregateRootId);
 
             if (events.Count == 0)
                 throw new AggregateRootDoesNotExistException();
@@ -33,9 +35,10 @@ namespace SystemDot.Domain
             return aggregateRoot;
         }
 
-        static IEnumerable<SourcedEvent> GetEvents(string aggregateRootId)
+        static async Task<List<SourcedEvent>> GetEventsAsync(string aggregateRootId)
         {
-            return EventSessionProvider.Session.GetEvents(aggregateRootId);
+            IEnumerable<SourcedEvent> sourcedEvents = await EventSessionProvider.Session.GetEventsAsync(aggregateRootId);
+            return sourcedEvents.ToList();
         }
     }
 }

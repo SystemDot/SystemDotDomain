@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using SystemDot.EventSourcing.Sessions;
 using SystemDot.Messaging;
 using SystemDot.Messaging.Handling.Actions;
@@ -16,19 +17,19 @@ namespace SystemDot.Domain.Commands
             this.eventSessionFactory = eventSessionFactory;
         }
 
-        public void SendCommand<T>(Action<T> initaliseCommandAction) where T : new()
+        public async Task SendCommandAsync<T>(Action<T> initaliseCommandAction) where T : new()
         {
             var message = new T();
             initaliseCommandAction(message);
-            SendCommand(message);
+            await SendCommandAsync(message);
         }
 
-        public void SendCommand<T>(T command)
+        public async Task SendCommandAsync<T>(T command)
         {
             using (var session = eventSessionFactory.Create())
             {
                 bus.Send(command);
-                session.Commit();
+                await session.CommitAsync();
             }   
         }
 

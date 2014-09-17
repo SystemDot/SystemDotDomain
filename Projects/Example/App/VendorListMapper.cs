@@ -1,4 +1,4 @@
-﻿using SystemDot.Querying;
+﻿using System.Threading.Tasks;
 using SystemDot.Querying.Mapping;
 using SystemDot.Querying.Repositories;
 using Domain;
@@ -14,9 +14,12 @@ namespace App
             this.repository = repository;
         }
 
-        protected override void Map(VendorActivated @event)
+        protected async override Task MapAsync(VendorActivated @event)
         {
-            repository.Add(new VendorListItem { Id = @event.VendorId, Name = @event.VendorName});
+            await repository.AddAsync(new VendorListItem
+            {
+                Id = @event.VendorId, Name = @event.VendorName
+            });
         }
     }
 }

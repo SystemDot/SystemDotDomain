@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.EventSourcing", "..\Projects\SystemDot.EventSourcing\SystemDot.EventSourcing.csproj", "{44526A4F-ABB1-47D4-99A6-3ADF373E09B2}"
 EndProject
@@ -29,6 +29,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{044CC2
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.Domain.Specifications", "..\Projects\SystemDot.Domain.Specifications\SystemDot.Domain.Specifications.csproj", "{222E0EC1-3438-46E3-B5E4-BB5316C8BFB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.AzureMobile", "..\Projects\SystemDot.AzureMobile\SystemDot.AzureMobile.csproj", "{3B1D5BFE-F19D-4548-A01D-5CABC8B2A3ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.Querying.AzureMobile", "..\Projects\SystemDot.Querying.AzureMobile\SystemDot.Querying.AzureMobile.csproj", "{D8335D0F-3D71-43F9-8242-579FB2D961B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.Querying.InMemory", "SystemDot.Querying.InMemory\SystemDot.Querying.InMemory.csproj", "{34C5D2AF-6C36-4E3B-943F-8007CF45D689}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +78,18 @@ Global
 		{222E0EC1-3438-46E3-B5E4-BB5316C8BFB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{222E0EC1-3438-46E3-B5E4-BB5316C8BFB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{222E0EC1-3438-46E3-B5E4-BB5316C8BFB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B1D5BFE-F19D-4548-A01D-5CABC8B2A3ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B1D5BFE-F19D-4548-A01D-5CABC8B2A3ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B1D5BFE-F19D-4548-A01D-5CABC8B2A3ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B1D5BFE-F19D-4548-A01D-5CABC8B2A3ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8335D0F-3D71-43F9-8242-579FB2D961B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8335D0F-3D71-43F9-8242-579FB2D961B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8335D0F-3D71-43F9-8242-579FB2D961B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8335D0F-3D71-43F9-8242-579FB2D961B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34C5D2AF-6C36-4E3B-943F-8007CF45D689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34C5D2AF-6C36-4E3B-943F-8007CF45D689}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34C5D2AF-6C36-4E3B-943F-8007CF45D689}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34C5D2AF-6C36-4E3B-943F-8007CF45D689}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

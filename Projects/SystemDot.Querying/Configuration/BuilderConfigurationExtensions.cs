@@ -4,9 +4,9 @@ namespace SystemDot.Querying.Configuration
 {
     public static class BuilderConfigurationExtensions
     {
-        public static BuilderConfiguration UseQuerying(this BuilderConfiguration config)
+        public static QueryingBuilderConfiguration UseQuerying(this BuilderConfiguration config)
         {
-            return config;
+            return new QueryingBuilderConfiguration(config);
         }
     }
 }

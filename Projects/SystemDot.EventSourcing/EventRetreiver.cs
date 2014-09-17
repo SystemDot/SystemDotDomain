@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using SystemDot.EventSourcing.Sessions;
 
 namespace SystemDot.EventSourcing
@@ -13,9 +14,10 @@ namespace SystemDot.EventSourcing
             this.factory = factory;
         }
 
-        public IEnumerable<SourcedEvent> GetAllEvents()
+        public async Task<IEnumerable<SourcedEvent>> GetAllEventsAsync()
         {
-            return factory.Create().AllEvents().ToList();
+            var allEvents = await factory.Create().AllEventsAsync();
+            return allEvents.ToList();
         }
     }
 }

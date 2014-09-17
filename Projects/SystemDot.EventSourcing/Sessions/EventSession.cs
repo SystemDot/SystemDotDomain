@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SystemDot.Core;
 using SystemDot.Core.Collections;
 using SystemDot.EventSourcing.Dispatching;
@@ -17,18 +18,20 @@ namespace SystemDot.EventSourcing.Sessions
             eventsToCommit = new List<EventContainer>();
         }
 
-        public abstract IEnumerable<SourcedEvent> GetEvents(string streamId);
+        public abstract Task<IEnumerable<SourcedEvent>> GetEventsAsync(string streamId);
 
         public void StoreEvent(SourcedEvent @event, string aggregateRootId)
         {
             eventsToCommit.Add(new EventContainer(aggregateRootId, @event));
         }
 
-        public void Commit()
+        public async Task CommitAsync()
         {
             eventsToCommit.ForEach(CommitEvent);
-            OnEventsCommitted();
-            eventsToCommit.Clear();
+                OnEventsCommitted();
+                eventsToCommit.Clear();
+
+            await Task.Yield();
         }
 
         void CommitEvent(EventContainer @event)
@@ -41,6 +44,6 @@ namespace SystemDot.EventSourcing.Sessions
 
         protected abstract void OnEventCommitting(EventContainer eventContainer);
 
-        public abstract IEnumerable<SourcedEvent> AllEvents();
+        public abstract Task<IEnumerable<SourcedEvent>> AllEventsAsync();
     }
 }

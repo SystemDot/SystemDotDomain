@@ -1,4 +1,5 @@
-﻿using SystemDot.Core;
+﻿using System.Threading.Tasks;
+using SystemDot.Core;
 using SystemDot.Core.Collections;
 using SystemDot.EventSourcing;
 using SystemDot.Ioc;
@@ -21,15 +22,19 @@ namespace SystemDot.Querying
             eventRouter = new MessageHandlerRouter();
         }
 
-        public void Build()
+        public async Task BuildAsync()
         {
             PopulateRouter();
-            eventRetreiver.GetAllEvents().ForEach(BuildFromEvent);
+            var allEvents = await eventRetreiver.GetAllEventsAsync();
+            foreach (var sourcedEvent in allEvents)
+            {
+                await BuildFromEventAsync(sourcedEvent);
+            }
         }
 
-        void BuildFromEvent(object @event)
+        async Task BuildFromEventAsync(object @event)
         {
-            eventRouter.RouteMessageToHandlers(@event);
+            await eventRouter.RouteMessageToHandlersAsync(@event);
         }
 
         void PopulateRouter()

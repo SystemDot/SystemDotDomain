@@ -1,12 +1,14 @@
+using System.Threading.Tasks;
+
 namespace SystemDot.Querying.Mapping
 {
     public abstract class ReadModelMapper<T> : IReadModelMapper
     {
-        public void Handle(T @event)
+        public async Task Handle(T @event)
         {
-            Map(@event);
+            await MapAsync(@event);
         }
 
-        protected abstract void Map(T @event);
+        protected abstract Task MapAsync (T @event);
     }
 }

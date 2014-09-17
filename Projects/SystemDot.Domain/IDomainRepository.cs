@@ -1,13 +1,13 @@
-using System;
+using System.Threading.Tasks;
 using SystemDot.Domain.Aggregation;
 
 namespace SystemDot.Domain
 {
     public interface IDomainRepository
     {
-        TAggregateRoot Get<TAggregateRoot>(string aggregateRootId) 
+        Task<TAggregateRoot> GetAsync<TAggregateRoot>(string aggregateRootId) 
             where TAggregateRoot : AggregateRoot, new();
 
-        bool Exists(string aggregateRootId);
+        Task<bool> ExistsAsync(string aggregateRootId);
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using SystemDot.Core;
 using SystemDot.Core.Collections;
 using SystemDot.EventSourcing.Sessions;
@@ -22,21 +23,25 @@ namespace SystemDot.EventSourcing.Sql.Windows
             streams = new Dictionary<Guid, IEventStream>();
         }
 
-        public IEnumerable<SourcedEvent> AllEvents()
+        public async Task<IEnumerable<SourcedEvent>> AllEventsAsync()
         {
-            return eventStore
-                .Advanced
-                .GetFrom(DateTime.MinValue)
-                .SelectMany(e => e.Events)
-                .Select(CreateSourcedEvent);
+            return await Task.Run(() =>
+                eventStore
+                    .Advanced
+                    .GetFrom(DateTime.MinValue)
+                    .SelectMany(e => e.Events)
+                    .Select(CreateSourcedEvent));
         }
 
-        public IEnumerable<SourcedEvent> GetEvents(string streamId)
+        public async Task<IEnumerable<SourcedEvent>> GetEventsAsync(string streamId)
         {
             IEventStream stream = GetStream(GetInternalAggregateRootId(streamId));
 
-            return stream.CommittedEvents.Select(CreateSourcedEvent)
-                .Concat(stream.UncommittedEvents.Select(CreateSourcedEvent));
+            return await Task.Run(() =>
+                stream.CommittedEvents
+                    .Select(CreateSourcedEvent)
+                    .Concat(stream.UncommittedEvents
+                    .Select(CreateSourcedEvent)));
         }
 
         SourcedEvent CreateSourcedEvent(EventMessage @from)
@@ -68,9 +73,12 @@ namespace SystemDot.EventSourcing.Sql.Windows
             return lookup.LookupId<string>(aggregateRootId);
         }
 
-        public void Commit()
+        public async Task CommitAsync()
         {
-            streams.ForEach(s => CommitStream(Guid.NewGuid(), s.Value));
+            foreach (var stream in streams)
+            {
+                await CommitStreamAsync(Guid.NewGuid(), stream.Value);
+            }
         }
 
         IEventStream GetStream(Guid aggregateRootId)
@@ -82,11 +90,11 @@ namespace SystemDot.EventSourcing.Sql.Windows
             return stream;
         }
 
-        void CommitStream(Guid commandId, IEventStream toCommit)
+        async Task CommitStreamAsync(Guid commandId, IEventStream toCommit)
         {
             try
             {
-                toCommit.CommitChanges(commandId);
+                await Task.Run(() => toCommit.CommitChanges(commandId));
             }
             catch (DuplicateCommitException)
             {

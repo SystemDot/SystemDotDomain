@@ -17,7 +17,7 @@ namespace SystemDot.Domain.Specifications
         static TestAggregateRoot root;
         static IEventSessionFactory eventSessionFactory;
 
-        Establish context = () =>
+        Establish context = async () =>
         {
             IIocContainer container = new IocContainer();
 
@@ -34,13 +34,13 @@ namespace SystemDot.Domain.Specifications
             {
                 var root = TestAggregateRoot.Create(Id);
                 root.SetSomeMoreStateResultingInEvent();
-                session.Commit();
+                await session.CommitAsync();
             }   
         };
 
-        Because of = () =>
+        Because of = async () =>
         {
-            using (eventSessionFactory.Create()) root = repository.Get<TestAggregateRoot>(Id);
+            using (eventSessionFactory.Create()) root = await repository.GetAsync<TestAggregateRoot>(Id);
         };
 
         It should_have_hydrated_the_root_with_the_first_event = () => root.Id.ShouldEqual(Id);

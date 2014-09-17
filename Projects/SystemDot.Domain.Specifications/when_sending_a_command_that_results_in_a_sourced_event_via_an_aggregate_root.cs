@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using SystemDot.Configuration;
 using SystemDot.Core;
@@ -37,17 +36,18 @@ namespace SystemDot.Domain.Specifications
             Messenger.RegisterHandler<TestAggregateRootCreatedEvent>(e => handledEvent = e);
         };
 
-        Because of = () => commandBus.SendCommand<TestCommand>(c => c.Id = Id);
+        Because of = async () => await commandBus.SendCommandAsync<TestCommand>(c => c.Id = Id);
 
 
-        It should_put_the_sourced_event_in_the_session_with_the_event_as_its_session = () =>
-            EventSessionProvider.Session.GetEvents(Id).Single()
+        It should_put_the_sourced_event_in_the_session_with_the_event_as_its_session = async () =>
+             (await EventSessionProvider.Session.GetEventsAsync(Id)).Single()
                 .Body.As<TestAggregateRootCreatedEvent>().Id.ShouldEqual(Id);
 
         It should_send_the_event = () => handledEvent.Id.ShouldEqual(Id);
         
-        It should_put_the_sourced_event_in_the_session_with_the_aggregate_root_type_in_its_headers = () =>
-            EventSessionProvider.Session.GetEvents(Id).Single()
-                .GetHeader<Type>(EventHeaderKeys.AggregateType).ShouldEqual(typeof(TestAggregateRoot));
+        It should_put_the_sourced_event_in_the_session_with_the_aggregate_root_type_in_its_headers = async () =>
+            (await EventSessionProvider.Session.GetEventsAsync(Id)).Single()
+                .GetHeader<Type>(EventHeaderKeys.AggregateType)
+                .ShouldEqual(typeof(TestAggregateRoot));
     }
 }

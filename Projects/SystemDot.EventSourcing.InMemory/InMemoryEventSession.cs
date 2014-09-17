@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using SystemDot.EventSourcing.Dispatching;
 using SystemDot.EventSourcing.Sessions;
 
@@ -15,8 +15,10 @@ namespace SystemDot.EventSourcing.InMemory
             events = new List<EventContainer>();
         }
 
-        public override IEnumerable<SourcedEvent> GetEvents(string streamId)
+        public override async Task<IEnumerable<SourcedEvent>> GetEventsAsync(string streamId)
         {
+            await Task.Yield();
+
             return events
                 .Where(e => e.AggregateRootId == streamId)
                 .Select(e => e.Event);
@@ -31,8 +33,10 @@ namespace SystemDot.EventSourcing.InMemory
             events.Add(eventContainer);
         }
 
-        public override IEnumerable<SourcedEvent> AllEvents()
+        public override async Task<IEnumerable<SourcedEvent>> AllEventsAsync()
         {
+            await Task.Yield();
+
             return events.Select(c => c.Event);
         }
     }

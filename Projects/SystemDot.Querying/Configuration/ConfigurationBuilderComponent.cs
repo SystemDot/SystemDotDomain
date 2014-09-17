@@ -9,7 +9,7 @@ namespace SystemDot.Querying.Configuration
         public void Configure(ConfigurationBuilder builder)
         {
             builder.RegisterBuildAction(c => c.RegisterFromAssemblyOf<IQueryableRepository>());
-            builder.RegisterBuildAction(c => c.Resolve<ReadModelBuilder>().Build(), BuildOrder.Late);
+            builder.RegisterBuildAction(async c => await c.Resolve<ReadModelBuilder>().BuildAsync(), BuildOrder.Late);
         }
     }
 }

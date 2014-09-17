@@ -1,16 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SystemDot.EventSourcing.Sessions
 {
     public interface IEventSession : IDisposable
     {
-        IEnumerable<SourcedEvent> GetEvents(string streamId);
+        Task<IEnumerable<SourcedEvent>> GetEventsAsync(string streamId);
 
         void StoreEvent(SourcedEvent @event, string aggregateRootId);
 
-        void Commit();
+        Task CommitAsync();
 
-        IEnumerable<SourcedEvent> AllEvents();
+        Task<IEnumerable<SourcedEvent>> AllEventsAsync();
     }
 }

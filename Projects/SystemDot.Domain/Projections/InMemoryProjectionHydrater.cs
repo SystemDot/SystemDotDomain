@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using SystemDot.Core.Collections;
 using SystemDot.EventSourcing.Sessions;
 using SystemDot.Ioc;
@@ -18,19 +19,23 @@ namespace SystemDot.Domain.Projections
             this.container = container;
         }
 
-        public void HydrateProjections()
+        public async Task HydrateProjectionsAsync()
         {
-            MessageHandlerRouter router = PopulateHandlerRouter();
-            IEnumerable<SourcedEvent> sourcedEvents = eventSessionFactory.Create().AllEvents();
-            IEnumerable<object> enumerable = sourcedEvents.Select(s => s.Body);
-            enumerable.ForEach(router.RouteMessageToHandlers);
+            IEnumerable<SourcedEvent> sourcedEvents = await eventSessionFactory.Create().AllEventsAsync();
+
+            foreach (var @event in sourcedEvents.Select(s => s.Body))
+            {
+                await PopulateHandlerRouter().RouteMessageToHandlersAsync(@event);
+            }
         }
 
         MessageHandlerRouter PopulateHandlerRouter()
         {
             var router = new MessageHandlerRouter();
 
-            container.ResolveAllTypesThatImplement<IInMemoryProjection>().ForEach(router.RegisterHandler);
+            container
+                .ResolveAllTypesThatImplement<IInMemoryProjection>()
+                .ForEach(router.RegisterHandler);
 
             return router;
         }
