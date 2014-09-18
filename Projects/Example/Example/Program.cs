@@ -24,6 +24,8 @@ namespace Example
         static void Main(string[] args)
         {
             MainAsync().Wait();
+            Console.WriteLine("Done");
+            Console.ReadLine();
         }
 
         static async Task MainAsync()

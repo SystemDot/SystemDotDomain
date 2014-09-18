@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.EventSourcing", "..\Projects\SystemDot.EventSourcing\SystemDot.EventSourcing.csproj", "{44526A4F-ABB1-47D4-99A6-3ADF373E09B2}"
 EndProject
@@ -34,7 +34,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.AzureMobile", "..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.Querying.AzureMobile", "..\Projects\SystemDot.Querying.AzureMobile\SystemDot.Querying.AzureMobile.csproj", "{D8335D0F-3D71-43F9-8242-579FB2D961B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.Querying.InMemory", "SystemDot.Querying.InMemory\SystemDot.Querying.InMemory.csproj", "{34C5D2AF-6C36-4E3B-943F-8007CF45D689}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.Querying.InMemory", "..\Projects\SystemDot.Querying.InMemory\SystemDot.Querying.InMemory.csproj", "{34C5D2AF-6C36-4E3B-943F-8007CF45D689}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
