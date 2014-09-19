@@ -33,9 +33,9 @@ namespace SystemDot.Domain.Commands
             }   
         }
 
-        public void RequestAndHandleReply<TRequest, TResponse>(TRequest request, Action<TResponse> responseHandler)
+        public async Task RequestAndHandleReplyAsync<TRequest, TResponse>(TRequest request, Action<TResponse> responseHandler)
         {
-            bus.Send(request, responseHandler);
+            await bus.SendAsync(request, responseHandler);
         }
 
         public ActionSubscriptionToken<TMessage> RegisterHandler<TMessage>(Action<TMessage> toRegister)
