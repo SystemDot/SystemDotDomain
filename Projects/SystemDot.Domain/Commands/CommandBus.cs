@@ -28,9 +28,9 @@ namespace SystemDot.Domain.Commands
         {
             using (var session = eventSessionFactory.Create())
             {
-                bus.Send(command);
+                await bus.SendAsync(command);
                 await session.CommitAsync();
-            }   
+            } 
         }
 
         public async Task RequestAndHandleReplyAsync<TRequest, TResponse>(TRequest request, Action<TResponse> responseHandler)
