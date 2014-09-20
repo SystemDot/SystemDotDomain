@@ -31,7 +31,7 @@ namespace SystemDot.EventSourcing.Sessions
                 OnEventsCommitted();
                 eventsToCommit.Clear();
 
-            await Task.Yield();
+            await Task.FromResult(false);
         }
 
         void CommitEvent(EventContainer @event)

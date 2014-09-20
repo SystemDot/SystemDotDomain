@@ -59,13 +59,11 @@ namespace SystemDot.Querying.InMemory
 
         public async Task<IEnumerable<T>> ToEnumerableAsync()
         {
-            await Task.Yield();
             return  from.ToList();
         }
 
         public async Task<List<T>> ToListAsync()
         {
-            await Task.Yield();
             return from.ToList();
         }
 

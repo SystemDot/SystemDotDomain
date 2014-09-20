@@ -16,13 +16,11 @@ namespace SystemDot.Querying.InMemory
 
         public async Task AddAsync<T>(T toAdd) where T : IdEqualityBase<T>
         {
-            await Task.Yield();
             entities.TryAdd(toAdd, toAdd);
         }
 
         public async Task RemoveAsync<T>(T toRemove) where T : IdEqualityBase<T>
         {
-            await Task.Yield(); 
             object temp;
             entities.TryRemove(toRemove, out temp);
         }
