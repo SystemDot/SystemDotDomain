@@ -28,7 +28,7 @@ namespace SystemDot.Querying.AzureMobile.Configuration
         public BuilderConfiguration WithLicenceKey(string licenceKey)
         {
             builderConfiguration.RegisterBuildAction(async c => await c.Resolve<QueryingDataContext>()
-                .Initialise(azureServerUrl, licenceKey, dbFileName, tableDefinitions));
+                .InitialiseAsync(azureServerUrl, licenceKey, dbFileName, tableDefinitions));
 
             return builderConfiguration;
         }

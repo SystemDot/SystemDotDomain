@@ -15,13 +15,13 @@ namespace SystemDot.Querying.AzureMobile.Configuration
             this.factory = factory;
         }
 
-        public async Task Initialise(
+        public async Task InitialiseAsync(
             string azureServerUrl,
             string licenceKey,
             string localDbName,
             Action<TableDefiner> tableDefinitions)
         {
-            Current = await factory.Make(azureServerUrl, licenceKey, localDbName, tableDefinitions);
+            Current = await factory.MakeAsync(azureServerUrl, licenceKey, localDbName, tableDefinitions);
         }
     }
 }

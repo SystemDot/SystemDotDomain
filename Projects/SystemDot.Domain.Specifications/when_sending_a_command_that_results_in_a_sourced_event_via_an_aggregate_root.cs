@@ -36,7 +36,7 @@ namespace SystemDot.Domain.Specifications
             Messenger.RegisterHandler<TestAggregateRootCreatedEvent>(e => handledEvent = e);
         };
 
-        Because of = async () => await commandBus.SendCommandAsync<TestCommand>(c => c.Id = Id);
+        Because of = () => commandBus.SendCommandAsync<TestCommand>(c => c.Id = Id).Wait();
 
 
         It should_put_the_sourced_event_in_the_session_with_the_event_as_its_session = async () =>

@@ -20,7 +20,7 @@ namespace SystemDot.AzureMobile
             this.dataStoreContextFactory = dataStoreContextFactory;
         }
 
-        public async Task<DataContext> Make(
+        public async Task<DataContext> MakeAsync(
             string azureServerUrl,
             string licenceKey,
             string localDbName,

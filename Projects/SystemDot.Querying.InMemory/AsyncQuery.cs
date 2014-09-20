@@ -59,12 +59,12 @@ namespace SystemDot.Querying.InMemory
 
         public async Task<IEnumerable<T>> ToEnumerableAsync()
         {
-            return  from.ToList();
+            return await Task.FromResult(from.ToList());
         }
 
         public async Task<List<T>> ToListAsync()
         {
-            return from.ToList();
+            return await Task.FromResult(from.ToList());
         }
 
         public async Task<T> SingleAsync(Func<T, bool> predicate)

@@ -54,8 +54,7 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SystemDot">
-      <HintPath>..\..\Build\SystemDot.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\Solutions\packages\SystemDotCore.1.5.6\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

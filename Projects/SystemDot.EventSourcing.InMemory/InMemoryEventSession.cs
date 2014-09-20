@@ -17,9 +17,10 @@ namespace SystemDot.EventSourcing.InMemory
 
         public override async Task<IEnumerable<SourcedEvent>> GetEventsAsync(string streamId)
         {
-            return events
-                .Where(e => e.AggregateRootId == streamId)
-                .Select(e => e.Event);
+            return await Task.FromResult(
+                events
+                    .Where(e => e.AggregateRootId == streamId)
+                    .Select(e => e.Event));
         }
 
         protected override void OnEventsCommitted()
@@ -33,7 +34,7 @@ namespace SystemDot.EventSourcing.InMemory
 
         public override async Task<IEnumerable<SourcedEvent>> AllEventsAsync()
         {
-            return events.Select(c => c.Event);
+            return await Task.FromResult(events.Select(c => c.Event));
         }
     }
 }

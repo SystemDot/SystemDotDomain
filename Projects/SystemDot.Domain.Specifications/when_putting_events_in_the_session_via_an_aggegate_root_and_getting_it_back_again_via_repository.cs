@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using SystemDot.Configuration;
 using SystemDot.Domain.Configuration;
 using SystemDot.EventSourcing.Configuration;
@@ -17,7 +18,7 @@ namespace SystemDot.Domain.Specifications
         static TestAggregateRoot root;
         static IEventSessionFactory eventSessionFactory;
 
-        Establish context = async () =>
+        Establish context = () =>
         {
             IIocContainer container = new IocContainer();
 
@@ -34,11 +35,11 @@ namespace SystemDot.Domain.Specifications
             {
                 var root = TestAggregateRoot.Create(Id);
                 root.SetSomeMoreStateResultingInEvent();
-                await session.CommitAsync();
+                session.CommitAsync().Wait();
             }   
         };
 
-        Because of = async () =>
+        Because of  = async () =>
         {
             using (eventSessionFactory.Create()) root = await repository.GetAsync<TestAggregateRoot>(Id);
         };
