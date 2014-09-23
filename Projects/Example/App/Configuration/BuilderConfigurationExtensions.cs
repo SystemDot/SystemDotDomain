@@ -1,12 +1,14 @@
-﻿using SystemDot.Configuration;
+using SystemDot.Configuration;
+using Domain.Configuration;
 
 namespace App.Configuration
 {
-    public class ConfigurationBuilderComponent : IConfigurationBuilderComponent
+    public static class BuilderConfigurationExtensions
     {
-        public void Configure(ConfigurationBuilder builder)
+        public static BuilderConfiguration UseExampleApp(this BuilderConfiguration config)
         {
-            builder.RegisterBuildAction(c => c.RegisterTestApp());
+            config.UseExampleDomain();
+            return config;
         }
-    }  
+    }
 }

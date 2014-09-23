@@ -1,4 +1,5 @@
 using SystemDot.Ioc;
+using SystemDot.Querying.Mapping;
 using Domain;
 
 namespace App.Configuration
@@ -7,7 +8,10 @@ namespace App.Configuration
     {
         public static void RegisterTestApp(this IIocContainer container)
         {
-            container.RegisterFromAssemblyOf<VendorListItem>();
+            container.RegisterMultipleTypes()
+                .FromAssemblyOf<VendorListItem>()
+                .ThatImplementOpenType(typeof(IReadModelMapper<>))
+                .ByClass();
         }
     }
 }

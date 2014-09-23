@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 
 namespace SystemDot.Querying.Mapping
 {
-    public abstract class ReadModelMapper<T> : IReadModelMapper
+    public abstract class ReadModelMapper<T> : IReadModelMapper<T>
     {
         public async Task Handle(T @event)
         {

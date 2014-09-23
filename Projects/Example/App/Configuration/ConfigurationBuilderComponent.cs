@@ -1,12 +1,12 @@
 ﻿using SystemDot.Configuration;
 
-namespace Domain.Configuration
+namespace App.Configuration
 {
     public class ConfigurationBuilderComponent : IConfigurationBuilderComponent
     {
         public void Configure(ConfigurationBuilder builder)
         {
-            builder.RegisterBuildAction(c => c.RegisterTestDomain());
+            builder.RegisterBuildAction(c => c.RegisterTestApp());
         }
     }
 }

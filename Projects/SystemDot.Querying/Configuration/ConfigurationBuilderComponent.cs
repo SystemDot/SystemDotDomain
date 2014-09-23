@@ -1,6 +1,5 @@
-﻿using SystemDot.Configuration;
-using SystemDot.Ioc;
-using SystemDot.Querying.Repositories;
+﻿using System.Linq;
+using SystemDot.Configuration;
 
 namespace SystemDot.Querying.Configuration
 {
@@ -8,8 +7,8 @@ namespace SystemDot.Querying.Configuration
     {
         public void Configure(ConfigurationBuilder builder)
         {
-            builder.RegisterBuildAction(c => c.RegisterFromAssemblyOf<IQueryableRepository>());
-            builder.RegisterBuildAction(async c => await c.Resolve<ReadModelBuilder>().BuildAsync(), BuildOrder.Late);
+            builder.RegisterBuildAction(c => c.RegisterQuerying());
+            builder.RegisterBuildAction(async c => await c.BuildReadModel(), BuildOrder.VeryLate);
         }
     }
 }

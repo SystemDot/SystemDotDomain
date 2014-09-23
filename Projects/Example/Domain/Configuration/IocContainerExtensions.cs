@@ -1,3 +1,5 @@
+using SystemDot.Domain.Commands;
+using SystemDot.Domain.Events;
 using SystemDot.Ioc;
 
 namespace Domain.Configuration
@@ -6,7 +8,14 @@ namespace Domain.Configuration
     {
         public static void RegisterTestDomain(this IIocContainer container)
         {
-            container.RegisterFromAssemblyOf<ActivateVendor>();
+            container.RegisterMultipleTypes()
+                .FromAssemblyOf<ActivateVendor>()
+                .ThatImplementOpenType(typeof(IAsyncCommandHandler<>))
+                .ByInterface();
+
+            container.DecorateMultipleTypes()
+                .ThatImplementOpenType(typeof(IAsyncCommandHandler<>))
+                .WithOpenTypeDecorator(typeof(EventSessionAsyncCommandHandlerDecorator<>));
         }
     }
 }

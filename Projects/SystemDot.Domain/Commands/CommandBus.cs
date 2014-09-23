@@ -9,15 +9,14 @@ namespace SystemDot.Domain.Commands
     public class CommandBus : ICommandBus
     {
         readonly IBus bus;
-        readonly IEventSessionFactory eventSessionFactory;
-
-        protected CommandBus(IBus bus, IEventSessionFactory eventSessionFactory)
+        
+        protected CommandBus(IBus bus)
         {
             this.bus = bus;
-            this.eventSessionFactory = eventSessionFactory;
         }
 
-        public async Task SendCommandAsync<T>(Action<T> initaliseCommandAction) where T : new()
+        public async Task SendCommandAsync<T>(Action<T> initaliseCommandAction) 
+            where T : new()
         {
             var message = new T();
             initaliseCommandAction(message);
@@ -26,11 +25,7 @@ namespace SystemDot.Domain.Commands
 
         public async Task SendCommandAsync<T>(T command)
         {
-            using (var session = eventSessionFactory.Create())
-            {
-                await bus.SendAsync(command);
-                await session.CommitAsync();
-            } 
+            await bus.SendAsync(command);
         }
 
         public async Task RequestAndHandleReplyAsync<TRequest, TResponse>(TRequest request, Action<TResponse> responseHandler)

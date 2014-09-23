@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Threading.Tasks;
 using SystemDot.Core;
 using SystemDot.Core.Collections;
 using SystemDot.EventSourcing;
@@ -11,20 +12,18 @@ namespace SystemDot.Querying
     public class ReadModelBuilder
     {
         readonly MessageHandlerRouter eventRouter;
-        readonly IIocContainer container;
         readonly EventRetreiver eventRetreiver;
 
-        public ReadModelBuilder(IIocContainer container, EventRetreiver eventRetreiver)
+        public ReadModelBuilder(EventRetreiver eventRetreiver)
         {
-            this.container = container;
             this.eventRetreiver = eventRetreiver;
 
             eventRouter = new MessageHandlerRouter();
         }
 
-        public async Task BuildAsync()
+        public async Task BuildAsync(IEnumerable mappers)
         {
-            PopulateRouter();
+            PopulateRouter(mappers);
             var allEvents = await eventRetreiver.GetAllEventsAsync();
             foreach (var sourcedEvent in allEvents)
             {
@@ -37,9 +36,9 @@ namespace SystemDot.Querying
             await eventRouter.RouteMessageToHandlersAsync(@event);
         }
 
-        void PopulateRouter()
+        void PopulateRouter(IEnumerable mappers)
         {
-            eventRouter.RegisterHandlersFromContainer<IReadModelMapper>(container);
+            mappers.ForEach(eventRouter.RegisterHandler);
         }
     }
 }

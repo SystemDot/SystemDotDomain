@@ -44,7 +44,8 @@
     <Compile Include="Aggregation\SourcedEventHandler.cs" />
     <Compile Include="Commands\CommandBus.cs" />
     <Compile Include="Commands\ICommandBus.cs" />
-    <Compile Include="Commands\ICommandHandler.cs" />
+    <Compile Include="Commands\IAsyncCommandHandler.cs" />
+    <Compile Include="Commands\LongRunningAsyncCommandHandlerDecorator.cs" />
     <Compile Include="Commands\ObjectExtensions.cs" />
     <Compile Include="Configuration\BuilderConfigurationExtensions.cs" />
     <Compile Include="Configuration\ConfigurationBuilderComponent.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="DomainRepository.cs" />
     <Compile Include="Events\EventBus.cs" />
     <Compile Include="Events\EventDispatcher.cs" />
+    <Compile Include="Events\EventSessionAsyncCommandHandlerDecorator.cs" />
     <Compile Include="Events\IEventBus.cs" />
     <Compile Include="IDomainRepository.cs" />
     <Compile Include="Projections\IInMemoryProjection.cs" />
@@ -69,7 +71,7 @@
       <HintPath>..\..\Solutions\packages\Newtonsoft.Json.6.0.2\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SystemDot">
-      <HintPath>..\..\Solutions\packages\SystemDotCore.1.5.8\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.dll</HintPath>
+      <HintPath>..\..\Solutions\packages\SystemDotCore.1.5.10\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

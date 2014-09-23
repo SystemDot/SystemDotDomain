@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SystemDot.Core.Collections;
 using SystemDot.EventSourcing.Sessions;
-using SystemDot.Ioc;
 using SystemDot.Messaging.Handling;
 
 namespace SystemDot.Domain.Projections
@@ -11,31 +11,28 @@ namespace SystemDot.Domain.Projections
     public class InMemoryProjectionHydrater
     {
         readonly IEventSessionFactory eventSessionFactory;
-        readonly IIocContainer container;
 
-        public InMemoryProjectionHydrater(IEventSessionFactory eventSessionFactory, IIocContainer container)
+        public InMemoryProjectionHydrater(IEventSessionFactory eventSessionFactory)
         {
             this.eventSessionFactory = eventSessionFactory;
-            this.container = container;
         }
 
-        public async Task HydrateProjectionsAsync()
+        public async Task HydrateProjectionsAsync(IEnumerable projections)
         {
+            MessageHandlerRouter router = PopulateHandlerRouter(projections);
             IEnumerable<SourcedEvent> sourcedEvents = await eventSessionFactory.Create().AllEventsAsync();
 
             foreach (var @event in sourcedEvents.Select(s => s.Body))
             {
-                await PopulateHandlerRouter().RouteMessageToHandlersAsync(@event);
+                await router.RouteMessageToHandlersAsync(@event);
             }
         }
 
-        MessageHandlerRouter PopulateHandlerRouter()
+        MessageHandlerRouter PopulateHandlerRouter(IEnumerable projections)
         {
             var router = new MessageHandlerRouter();
 
-            container
-                .ResolveAllTypesThatImplement<IInMemoryProjection>()
-                .ForEach(router.RegisterHandler);
+            projections.ForEach(router.RegisterHandler);
 
             return router;
         }

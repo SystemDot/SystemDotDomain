@@ -1,12 +1,12 @@
-﻿using SystemDot.Configuration;
+using SystemDot.Configuration;
 
-namespace Domain.Configuration
+namespace Example
 {
     public class ConfigurationBuilderComponent : IConfigurationBuilderComponent
     {
         public void Configure(ConfigurationBuilder builder)
         {
-            builder.RegisterBuildAction(c => c.RegisterTestDomain());
+            builder.RegisterBuildAction(c => c.RegisterExample());
         }
     }
 }
