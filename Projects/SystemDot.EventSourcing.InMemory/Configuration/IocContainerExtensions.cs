@@ -1,4 +1,5 @@
-﻿using SystemDot.Ioc;
+﻿using SystemDot.EventSourcing.Sessions;
+using SystemDot.Ioc;
 
 namespace SystemDot.EventSourcing.InMemory.Configuration
 {
@@ -6,7 +7,8 @@ namespace SystemDot.EventSourcing.InMemory.Configuration
     {
         internal static void RegisterInMemoryEventSourcing(this IIocContainer container)
         {
-            container.RegisterFromAssemblyOf<InMemoryEventSession>();
+            container.RegisterInstance<InMemoryEventSession, InMemoryEventSession>();
+            container.RegisterInstance<IEventSessionFactory, InMemoryEventSessionFactory>();
         }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using SystemDot.Core;
-using SystemDot.Querying.Repositories;
+using SystemDot.RelationalDataStore.Repositories;
 
-namespace SystemDot.Querying.InMemory
+namespace SystemDot.RelationalDataStore.InMemory
 {
     public class AsyncQuery<T> : IAsyncQuery<T>
     {

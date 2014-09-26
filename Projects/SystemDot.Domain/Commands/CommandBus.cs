@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using SystemDot.EventSourcing.Sessions;
 using SystemDot.Messaging;
 using SystemDot.Messaging.Handling.Actions;
 
@@ -9,8 +8,8 @@ namespace SystemDot.Domain.Commands
     public class CommandBus : ICommandBus
     {
         readonly IBus bus;
-        
-        protected CommandBus(IBus bus)
+
+        public CommandBus(IBus bus)
         {
             this.bus = bus;
         }

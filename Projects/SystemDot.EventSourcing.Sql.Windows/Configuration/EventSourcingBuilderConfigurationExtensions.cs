@@ -1,6 +1,6 @@
 ﻿using SystemDot.Configuration;
+using SystemDot.Domain.Events.Dispatching;
 using SystemDot.EventSourcing.Configuration;
-using SystemDot.EventSourcing.Dispatching;
 using SystemDot.Ioc;
 using EventStore;
 

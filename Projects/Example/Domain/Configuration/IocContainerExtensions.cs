@@ -1,21 +1,27 @@
-using SystemDot.Domain.Commands;
+﻿using SystemDot.Domain.Commands;
 using SystemDot.Domain.Events;
+using SystemDot.EventSourcing;
 using SystemDot.Ioc;
 
 namespace Domain.Configuration
 {
-    internal static class IocContainerExtensions
+    public static class IocContainerExtensions
     {
         public static void RegisterTestDomain(this IIocContainer container)
         {
             container.RegisterMultipleTypes()
-                .FromAssemblyOf<ActivateVendor>()
+                .FromAssemblyOf<ActivateEventSourcedThing>()
                 .ThatImplementOpenType(typeof(IAsyncCommandHandler<>))
                 .ByInterface();
 
             container.DecorateMultipleTypes()
+                .FromAssemblyOf<ActivateEventSourcedThing>()
                 .ThatImplementOpenType(typeof(IAsyncCommandHandler<>))
-                .WithOpenTypeDecorator(typeof(EventSessionAsyncCommandHandlerDecorator<>));
+                .WithOpenTypeDecorator(typeof(EventSessionAsyncCommandHandler<>));
+
+            container.RegisterDecorator<
+                LongRunningAsyncCommandHandler<InvokeLongRunningProcess>,
+                IAsyncCommandHandler<InvokeLongRunningProcess>>();
         }
     }
 }

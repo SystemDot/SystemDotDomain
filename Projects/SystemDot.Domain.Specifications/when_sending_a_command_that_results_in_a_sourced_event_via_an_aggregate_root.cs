@@ -2,9 +2,10 @@
 using System.Linq;
 using SystemDot.Configuration;
 using SystemDot.Core;
-using SystemDot.Domain.Aggregation;
 using SystemDot.Domain.Commands;
 using SystemDot.Domain.Configuration;
+using SystemDot.EventSourcing;
+using SystemDot.EventSourcing.Aggregation;
 using SystemDot.EventSourcing.Configuration;
 using SystemDot.EventSourcing.InMemory.Configuration;
 using SystemDot.EventSourcing.Sessions;
@@ -23,13 +24,14 @@ namespace SystemDot.Domain.Specifications
         Establish context = () =>
         {
             IIocContainer container = new IocContainer();
-            container.RegisterFromAssemblyOf<when_sending_a_command_that_results_in_a_sourced_event_via_an_aggregate_root>();
+            container.RegisterInstance<TestCommandHandler, TestCommandHandler>();
+            container.RegisterDecorator<EventSessionAsyncCommandHandler<TestCommand>, TestCommandHandler>();
 
             Configure.SystemDot()
                 .ResolveReferencesWith(container)
                 .UseDomain().WithSimpleMessaging()
                 .UseEventSourcing().PersistToMemory()
-                .Initialise();
+                .InitialiseAsync().Wait();
 
             commandBus = container.Resolve<ICommandBus>();
 
@@ -40,13 +42,13 @@ namespace SystemDot.Domain.Specifications
 
 
         It should_put_the_sourced_event_in_the_session_with_the_event_as_its_session = async () =>
-             (await EventSessionProvider.Session.GetEventsAsync(Id)).Single()
+             EventSessionProvider.Session.GetEventsAsync(Id).Result.Single()
                 .Body.As<TestAggregateRootCreatedEvent>().Id.ShouldEqual(Id);
 
         It should_send_the_event = () => handledEvent.Id.ShouldEqual(Id);
         
         It should_put_the_sourced_event_in_the_session_with_the_aggregate_root_type_in_its_headers = async () =>
-            (await EventSessionProvider.Session.GetEventsAsync(Id)).Single()
+            EventSessionProvider.Session.GetEventsAsync(Id).Result.Single()
                 .GetHeader<Type>(EventHeaderKeys.AggregateType)
                 .ShouldEqual(typeof(TestAggregateRoot));
     }

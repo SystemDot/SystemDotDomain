@@ -8,7 +8,7 @@ namespace SystemDot.EventSourcing.Sql.Windows.Configuration
         internal static void RegisterSqlWindowsEventSourcing(this IIocContainer container)
         {
             container.RegisterInstance<ILookupIdCache, LookupIdCache>();
-            container.RegisterFromAssemblyOf<EventStoreEventSession>();
+            //container.RegisterFromAssemblyOf<EventStoreEventSession>();
         }
     }
 }

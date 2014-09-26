@@ -1,11 +1,11 @@
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading.Tasks;
-using SystemDot.Querying.Repositories;
+using SystemDot.RelationalDataStore.Repositories;
 
-namespace SystemDot.Querying.InMemory
+namespace SystemDot.RelationalDataStore.InMemory
 {
-    public class InMemoryRepository : IQueryableRepository
+    public class InMemoryRepository : IRepository
     {
         private readonly ConcurrentDictionary<object, object> entities;
 

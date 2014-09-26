@@ -1,12 +1,14 @@
+using System.Threading.Tasks;
 using SystemDot.Messaging.Handling;
 
 namespace SystemDot.Domain.Specifications
 {
-    public class TestCommandHandler : IMessageHandler<TestCommand>
+    public class TestCommandHandler : IAsyncMessageHandler<TestCommand>
     {
-        public void Handle(TestCommand message)
+        public Task Handle(TestCommand message)
         {
             TestAggregateRoot.Create(message.Id);
+            return Task.FromResult(false);
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace SystemDot.Querying.Repositories
+namespace SystemDot.RelationalDataStore.Repositories
 {
     public interface IAsyncQuery<T>
     {

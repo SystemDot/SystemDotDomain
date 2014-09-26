@@ -1,12 +1,12 @@
 using SystemDot.Configuration;
 
-namespace SystemDot.Querying.Configuration
+namespace SystemDot.RelationalDataStore.Configuration
 {
     public static class BuilderConfigurationExtensions
     {
-        public static QueryingBuilderConfiguration UseQuerying(this BuilderConfiguration config)
+        public static RelationalDataStoreBuilderConfiguration UseRelationalDataStore(this BuilderConfiguration config)
         {
-            return new QueryingBuilderConfiguration(config);
+            return new RelationalDataStoreBuilderConfiguration(config);
         }
     }
 }

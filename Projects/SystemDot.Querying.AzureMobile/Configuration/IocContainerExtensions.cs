@@ -1,12 +1,14 @@
 ﻿using SystemDot.Ioc;
+using SystemDot.RelationalDataStore.Repositories;
 
-namespace SystemDot.Querying.AzureMobile.Configuration
+namespace SystemDot.RelationalDataStore.AzureMobile.Configuration
 {
     internal static class IocContainerExtensions
     {
-        internal static void RegisterAzureMobileQuerying(this IIocContainer container)
+        internal static void RegisterAzureMobileRelationalDataStore(this IIocContainer container)
         {
-            container.RegisterFromAssemblyOf<QueryableRepository>();
+            container.RegisterInstance<IRepository, Repository>();
+            container.RegisterInstance<DataContextLookup, DataContextLookup>();
         }
     }
 }

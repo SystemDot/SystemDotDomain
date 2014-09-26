@@ -1,5 +1,5 @@
 using System;
-using SystemDot.Domain.Aggregation;
+using SystemDot.EventSourcing.Aggregation;
 
 namespace SystemDot.Domain.Specifications
 {

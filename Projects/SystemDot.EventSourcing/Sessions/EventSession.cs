@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using SystemDot.Core;
 using SystemDot.Core.Collections;
-using SystemDot.EventSourcing.Dispatching;
+using SystemDot.Domain.Events.Dispatching;
 
 namespace SystemDot.EventSourcing.Sessions
 {

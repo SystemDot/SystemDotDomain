@@ -1,10 +1,8 @@
 using System;
 using SystemDot.AzureMobile;
 using SystemDot.Configuration;
-using SystemDot.Ioc;
-using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
 
-namespace SystemDot.Querying.AzureMobile.Configuration
+namespace SystemDot.RelationalDataStore.AzureMobile.Configuration
 {
     public class AzureMobileSyncLicenceKeyBuilderConfiguration
     {
@@ -27,10 +25,16 @@ namespace SystemDot.Querying.AzureMobile.Configuration
 
         public BuilderConfiguration WithLicenceKey(string licenceKey)
         {
-            builderConfiguration.RegisterBuildAction(async c => await c.Resolve<QueryingDataContext>()
-                .InitialiseAsync(azureServerUrl, licenceKey, dbFileName, tableDefinitions));
-
-            return builderConfiguration;
+            builderConfiguration.RegisterBuildAction(c => c.RegisterAzureMobileRelationalDataStore());
+        
+            return builderConfiguration.RegisterBuildAction(
+                async c => await 
+                    c.Resolve<DataContextLookup>()
+                        .InitialiseAndAddAsync(
+                            azureServerUrl, 
+                            licenceKey, 
+                            dbFileName, 
+                            tableDefinitions), BuildOrder.VeryLate);
         }
     }
 }

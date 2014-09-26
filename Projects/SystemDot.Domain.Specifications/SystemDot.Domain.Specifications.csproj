@@ -34,7 +34,7 @@
   <ItemGroup>
     <Reference Include="Esent.Interop, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Solutions\packages\SystemDotCore.1.5.10\lib\net\Esent.Interop.dll</HintPath>
+      <HintPath>..\..\Solutions\packages\SystemDotCore.2.0.3\lib\net\Esent.Interop.dll</HintPath>
     </Reference>
     <Reference Include="Machine.Specifications">
       <HintPath>..\..\Solutions\packages\Machine.Specifications.0.7.0\lib\net45\Machine.Specifications.dll</HintPath>
@@ -58,26 +58,31 @@
     <Reference Include="System.Xml" />
     <Reference Include="SystemDot, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Solutions\packages\SystemDotCore.1.5.10\lib\net\SystemDot.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\Solutions\packages\SystemDotCore.2.0.3\lib\net\SystemDot.dll</HintPath>
     </Reference>
-    <Reference Include="SystemDot.Storage.Changes.Esent.Windows">
-      <HintPath>..\..\Solutions\packages\SystemDotCore.1.5.10\lib\net\SystemDot.Storage.Changes.Esent.Windows.dll</HintPath>
+    <Reference Include="SystemDot.Storage.Changes.Esent.Windows, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Solutions\packages\SystemDotCore.2.0.3\lib\net\SystemDot.Storage.Changes.Esent.Windows.dll</HintPath>
     </Reference>
     <Reference Include="SystemDot.Storage.Changes.Sql.Windows, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Solutions\packages\SystemDotCore.1.5.10\lib\net\SystemDot.Storage.Changes.Sql.Windows.dll</HintPath>
+      <HintPath>..\..\Solutions\packages\SystemDotCore.2.0.3\lib\net\SystemDot.Storage.Changes.Sql.Windows.dll</HintPath>
     </Reference>
     <Reference Include="SystemDot.Storage.Changes.SqlServer.Windows, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Solutions\packages\SystemDotCore.1.5.10\lib\net\SystemDot.Storage.Changes.SqlServer.Windows.dll</HintPath>
+      <HintPath>..\..\Solutions\packages\SystemDotCore.2.0.3\lib\net\SystemDot.Storage.Changes.SqlServer.Windows.dll</HintPath>
     </Reference>
     <Reference Include="SystemDot.Windows, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Solutions\packages\SystemDotCore.1.5.10\lib\net\SystemDot.Windows.dll</HintPath>
+      <HintPath>..\..\Solutions\packages\SystemDotCore.2.0.3\lib\net\SystemDot.Windows.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="configuring\when_using_azure_relational_data_storing.cs" />
+    <Compile Include="configuring\when_using_in_memory_event_sourcing.cs" />
+    <Compile Include="configuring\when_using_in_memory_relational_data_storing.cs" />
+    <Compile Include="configuring\when_using_domain_with_simple_messaging.cs" />
+    <Compile Include="configuring\when_using_sql_event_sourcing.cs" />
     <Compile Include="TestAggregateRoot.cs" />
     <Compile Include="TestAggregateRootCreatedEvent.cs" />
     <Compile Include="TestCommand.cs" />
@@ -87,9 +92,14 @@
     <Compile Include="when_sending_a_command_that_results_in_a_sourced_event_via_an_aggregate_root.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SystemDot.AzureMobile\SystemDot.AzureMobile.csproj">
+      <Project>{3b1d5bfe-f19d-4548-a01d-5cabc8b2a3ed}</Project>
+      <Name>SystemDot.AzureMobile</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SystemDot.Domain\SystemDot.Domain.csproj">
       <Project>{D5F19133-3DAF-46AF-95DD-EB9CF87FAAFE}</Project>
       <Name>SystemDot.Domain</Name>
@@ -98,9 +108,25 @@
       <Project>{3A6B60DD-76F9-4B48-932A-69E9F219CA6E}</Project>
       <Name>SystemDot.EventSourcing.InMemory</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SystemDot.EventSourcing.Sql.Windows\SystemDot.EventSourcing.Sql.Windows.csproj">
+      <Project>{0C2DFC27-3E6B-41D4-9199-A83A6C0D0348}</Project>
+      <Name>SystemDot.EventSourcing.Sql.Windows</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SystemDot.EventSourcing\SystemDot.EventSourcing.csproj">
       <Project>{44526A4F-ABB1-47D4-99A6-3ADF373E09B2}</Project>
       <Name>SystemDot.EventSourcing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SystemDot.Querying.AzureMobile\SystemDot.RelationalDataStore.AzureMobile.csproj">
+      <Project>{D8335D0F-3D71-43F9-8242-579FB2D961B5}</Project>
+      <Name>SystemDot.RelationalDataStore.AzureMobile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SystemDot.Querying.InMemory\SystemDot.RelationalDataStore.InMemory.csproj">
+      <Project>{34C5D2AF-6C36-4E3B-943F-8007CF45D689}</Project>
+      <Name>SystemDot.RelationalDataStore.InMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SystemDot.Querying\SystemDot.RelationalDataStore.csproj">
+      <Project>{FFCCE633-9B19-410A-B870-D81A703EB027}</Project>
+      <Name>SystemDot.RelationalDataStore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

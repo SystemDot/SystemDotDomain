@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.EventSourcing", "..\Projects\SystemDot.EventSourcing\SystemDot.EventSourcing.csproj", "{44526A4F-ABB1-47D4-99A6-3ADF373E09B2}"
 EndProject
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.EventSourcing.Sql
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.Domain", "..\Projects\SystemDot.Domain\SystemDot.Domain.csproj", "{D5F19133-3DAF-46AF-95DD-EB9CF87FAAFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.Querying", "..\Projects\SystemDot.Querying\SystemDot.Querying.csproj", "{FFCCE633-9B19-410A-B870-D81A703EB027}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.RelationalDataStore", "..\Projects\SystemDot.Querying\SystemDot.RelationalDataStore.csproj", "{FFCCE633-9B19-410A-B870-D81A703EB027}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{5EEF5D69-C6D9-4761-9AD9-F51C1507F13B}"
 EndProject
@@ -32,9 +32,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.Domain.Specificat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.AzureMobile", "..\Projects\SystemDot.AzureMobile\SystemDot.AzureMobile.csproj", "{3B1D5BFE-F19D-4548-A01D-5CABC8B2A3ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.Querying.AzureMobile", "..\Projects\SystemDot.Querying.AzureMobile\SystemDot.Querying.AzureMobile.csproj", "{D8335D0F-3D71-43F9-8242-579FB2D961B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.RelationalDataStore.AzureMobile", "..\Projects\SystemDot.Querying.AzureMobile\SystemDot.RelationalDataStore.AzureMobile.csproj", "{D8335D0F-3D71-43F9-8242-579FB2D961B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.Querying.InMemory", "..\Projects\SystemDot.Querying.InMemory\SystemDot.Querying.InMemory.csproj", "{34C5D2AF-6C36-4E3B-943F-8007CF45D689}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDot.RelationalDataStore.InMemory", "..\Projects\SystemDot.Querying.InMemory\SystemDot.RelationalDataStore.InMemory.csproj", "{34C5D2AF-6C36-4E3B-943F-8007CF45D689}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtherDomain", "..\Projects\Example\OtherDomain\OtherDomain.csproj", "{DFFBF0A8-00E8-4186-B8C1-E7A8AEF3680F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -90,6 +92,10 @@ Global
 		{34C5D2AF-6C36-4E3B-943F-8007CF45D689}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34C5D2AF-6C36-4E3B-943F-8007CF45D689}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34C5D2AF-6C36-4E3B-943F-8007CF45D689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFFBF0A8-00E8-4186-B8C1-E7A8AEF3680F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFFBF0A8-00E8-4186-B8C1-E7A8AEF3680F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFFBF0A8-00E8-4186-B8C1-E7A8AEF3680F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFFBF0A8-00E8-4186-B8C1-E7A8AEF3680F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,5 +104,6 @@ Global
 		{6EE3BD16-EADD-46F0-9C55-E6E45C7A00BE} = {5EEF5D69-C6D9-4761-9AD9-F51C1507F13B}
 		{A318E29C-3BD3-4782-A58E-92C8645422D2} = {5EEF5D69-C6D9-4761-9AD9-F51C1507F13B}
 		{F5B17B9B-982B-45E3-A600-140F332859C7} = {5EEF5D69-C6D9-4761-9AD9-F51C1507F13B}
+		{DFFBF0A8-00E8-4186-B8C1-E7A8AEF3680F} = {5EEF5D69-C6D9-4761-9AD9-F51C1507F13B}
 	EndGlobalSection
 EndGlobal

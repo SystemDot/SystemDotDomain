@@ -9,7 +9,7 @@ namespace SystemDot.EventSourcing.Configuration
         public EventSourcingBuilderConfiguration(BuilderConfiguration config)
         {
             this.config = config;
-            config.RegisterBuildAction(c => c.RegisterEventSourcing());
+            config.RegisterBuildAction(async c => await c.BuildReadModel(), BuildOrder.VeryLate);
         }
 
         public BuilderConfiguration GetBuilderConfiguration()

@@ -35,23 +35,37 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ActivateVendor.cs" />
-    <Compile Include="ActivateVendorCommandHandler.cs" />
+    <Compile Include="ActivateEventSourcedThing.cs" />
+    <Compile Include="ActivateEventSourcedThingCommandHandler.cs" />
     <Compile Include="Configuration\BuilderConfigurationExtensions.cs" />
-    <Compile Include="Configuration\ConfigurationBuilderComponent.cs" />
+    <Compile Include="Configuration\ExampleDomainBuilderConfiguration.cs" />
     <Compile Include="Configuration\IocContainerExtensions.cs" />
+    <Compile Include="InvokeLongRunningProcess.cs" />
+    <Compile Include="InvokeLongRunningProcessHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vendor.cs" />
-    <Compile Include="VendorActivated.cs" />
+    <Compile Include="EventSourcedThing.cs" />
+    <Compile Include="EventSourcedThingActivated.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SystemDot.Domain\SystemDot.Domain.csproj">
       <Project>{d5f19133-3daf-46af-95dd-eb9cf87faafe}</Project>
       <Name>SystemDot.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\SystemDot.EventSourcing.InMemory\SystemDot.EventSourcing.InMemory.csproj">
+      <Project>{3A6B60DD-76F9-4B48-932A-69E9F219CA6E}</Project>
+      <Name>SystemDot.EventSourcing.InMemory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\SystemDot.EventSourcing\SystemDot.EventSourcing.csproj">
       <Project>{44526a4f-abb1-47d4-99a6-3adf373e09b2}</Project>
       <Name>SystemDot.EventSourcing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SystemDot.Querying.InMemory\SystemDot.RelationalDataStore.InMemory.csproj">
+      <Project>{34C5D2AF-6C36-4E3B-943F-8007CF45D689}</Project>
+      <Name>SystemDot.RelationalDataStore.InMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SystemDot.Querying\SystemDot.RelationalDataStore.csproj">
+      <Project>{FFCCE633-9B19-410A-B870-D81A703EB027}</Project>
+      <Name>SystemDot.RelationalDataStore</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -59,7 +73,7 @@
       <HintPath>..\..\..\Solutions\packages\Newtonsoft.Json.6.0.2\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SystemDot">
-      <HintPath>..\..\..\Solutions\packages\SystemDotCore.1.5.10\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.dll</HintPath>
+      <HintPath>..\..\..\Solutions\packages\SystemDotCore.2.0.3\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

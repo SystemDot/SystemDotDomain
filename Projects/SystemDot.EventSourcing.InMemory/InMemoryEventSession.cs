@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using SystemDot.EventSourcing.Dispatching;
+using SystemDot.Domain.Events.Dispatching;
 using SystemDot.EventSourcing.Sessions;
 
 namespace SystemDot.EventSourcing.InMemory

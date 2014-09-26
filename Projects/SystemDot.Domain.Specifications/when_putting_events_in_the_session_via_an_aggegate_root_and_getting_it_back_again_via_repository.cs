@@ -1,7 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using SystemDot.Configuration;
 using SystemDot.Domain.Configuration;
+using SystemDot.EventSourcing;
 using SystemDot.EventSourcing.Configuration;
 using SystemDot.EventSourcing.InMemory.Configuration;
 using SystemDot.EventSourcing.Sessions;
@@ -26,7 +26,7 @@ namespace SystemDot.Domain.Specifications
                 .ResolveReferencesWith(container)
                 .UseDomain().WithSimpleMessaging()
                 .UseEventSourcing().PersistToMemory()
-                .Initialise();
+                .InitialiseAsync().Wait();
 
             repository = container.Resolve<IDomainRepository>();
             eventSessionFactory = container.Resolve<IEventSessionFactory>();
@@ -39,9 +39,10 @@ namespace SystemDot.Domain.Specifications
             }   
         };
 
-        Because of  = async () =>
+        Because of = () =>
         {
-            using (eventSessionFactory.Create()) root = await repository.GetAsync<TestAggregateRoot>(Id);
+            using (eventSessionFactory.Create()) 
+                root = repository.GetAsync<TestAggregateRoot>(Id).Result;
         };
 
         It should_have_hydrated_the_root_with_the_first_event = () => root.Id.ShouldEqual(Id);

@@ -4,9 +4,10 @@ namespace SystemDot.Domain.Configuration
 {
     public static class BuilderConfigurationExtensions
     {
-        public static SimpleMessagingBuilderConfiguration UseDomain(this BuilderConfiguration config)
+        public static DomainBuilderConfiguration UseDomain(this BuilderConfiguration config)
         {
-            return new SimpleMessagingBuilderConfiguration(config);
+            config.RegisterBuildAction(c => c.RegisterDomain());
+            return new DomainBuilderConfiguration(config);
         }
     }
 }

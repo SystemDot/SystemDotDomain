@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using SystemDot.Configuration;
 using SystemDot.Domain.Configuration;
@@ -6,8 +7,9 @@ using SystemDot.EventSourcing.Configuration;
 using SystemDot.EventSourcing.InMemory.Configuration;
 using SystemDot.Ioc;
 using SystemDot.Messaging.Handling.Actions;
-using SystemDot.Querying.Configuration;
-using SystemDot.Querying.InMemory.Configuration;
+using SystemDot.RelationalDataStore.Configuration;
+using SystemDot.RelationalDataStore.InMemory.Configuration;
+using Example.Configuration;
 
 namespace Example
 {
@@ -15,26 +17,28 @@ namespace Example
     {
         static void Main(string[] args)
         {
-            MainAsync().Wait();
-            Console.WriteLine("Done");
-            Console.ReadLine();
+            MainAsync();
+
+            while (true)
+            {
+                Thread.Sleep(TimeSpan.FromSeconds(1));
+                Console.WriteLine("I am the unhindered UI thread");
+            }
         }
 
         static async Task MainAsync()
         {
             IIocContainer container = new IocContainer();
 
-            Configure.SystemDot()
+            await Configure.SystemDot()
                 .ResolveReferencesWith(container)
                 .UseDomain()
+                    .DispatchEventsOnUiThread()
                     .WithSimpleMessaging()
-                .UseQuerying()
-                    .PersistToMemory()
-                .UseEventSourcing()
-                    .PersistToMemory()
-                    //.PersistToSql("EventStore")
                 .UseExample()
-                .Initialise();
+                    .PersistToMemory()
+                    //.PersistToSql()
+                .InitialiseAsync();
 
             await container.Resolve<ExampleRunner>().RunAsync();
         }

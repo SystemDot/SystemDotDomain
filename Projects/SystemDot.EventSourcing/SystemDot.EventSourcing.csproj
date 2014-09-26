@@ -35,9 +35,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Aggregation\AggregateEntity.cs" />
+    <Compile Include="Aggregation\AggregateRoot.cs" />
+    <Compile Include="Aggregation\AggregateRootDoesNotExistException.cs" />
+    <Compile Include="Aggregation\ConventionEventToHandlerRouter.cs" />
+    <Compile Include="Aggregation\EventHeaderKeys.cs" />
+    <Compile Include="Aggregation\EventSourceEventArgs.cs" />
+    <Compile Include="Aggregation\SourcedEventHandler.cs" />
     <Compile Include="Configuration\BuilderConfigurationExtensions.cs" />
-    <Compile Include="Dispatching\IEventDispatcher.cs" />
+    <Compile Include="DomainRepository.cs" />
     <Compile Include="EventRetreiver.cs" />
+    <Compile Include="EventSessionAsyncCommandHandler.cs" />
+    <Compile Include="IDomainRepository.cs" />
+    <Compile Include="Projections\IInMemoryProjection.cs" />
+    <Compile Include="Projections\InMemoryProjectionHydrater.cs" />
+    <Compile Include="Projections\Mapping\IReadModelMapper.cs" />
+    <Compile Include="Projections\Mapping\ReadModelMapper.cs" />
+    <Compile Include="Projections\ReadModelBuilder.cs" />
     <Compile Include="Sessions\EventContainer.cs" />
     <Compile Include="Sessions\EventSession.cs" />
     <Compile Include="Sessions\EventSessionProvider.cs" />
@@ -53,11 +67,17 @@
       <HintPath>..\..\Solutions\packages\Newtonsoft.Json.6.0.2\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SystemDot">
-      <HintPath>..\..\Solutions\packages\SystemDotCore.1.5.10\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.dll</HintPath>
+      <HintPath>..\..\Solutions\packages\SystemDotCore.2.0.3\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SystemDot.Domain\SystemDot.Domain.csproj">
+      <Project>{d5f19133-3daf-46af-95dd-eb9cf87faafe}</Project>
+      <Name>SystemDot.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

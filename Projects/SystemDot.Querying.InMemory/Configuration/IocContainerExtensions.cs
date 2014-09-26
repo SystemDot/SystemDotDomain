@@ -1,12 +1,13 @@
 ﻿using SystemDot.Ioc;
+using SystemDot.RelationalDataStore.Repositories;
 
-namespace SystemDot.Querying.InMemory.Configuration
+namespace SystemDot.RelationalDataStore.InMemory.Configuration
 {
     internal static class IocContainerExtensions
     {
-        internal static void RegisterInMemoryQuerying(this IIocContainer container)
+        internal static void RegisterInMemoryRelationalDataStore(this IIocContainer container)
         {
-            container.RegisterFromAssemblyOf<InMemoryRepository>();
+            container.RegisterInstance<IRepository, InMemoryRepository>();
         }
     }
 }

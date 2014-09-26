@@ -1,7 +1,6 @@
-using SystemDot.AzureMobile;
 using SystemDot.Configuration;
 
-namespace SystemDot.Querying.AzureMobile.Configuration
+namespace SystemDot.RelationalDataStore.AzureMobile.Configuration
 {
     public class AzureMobileBuilderConfiguration
     {

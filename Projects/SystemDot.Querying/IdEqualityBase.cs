@@ -1,6 +1,6 @@
 using System;
 
-namespace SystemDot.Querying
+namespace SystemDot.RelationalDataStore
 {
     public abstract class IdEqualityBase<T> : IEquatable<T> where T : IdEqualityBase<T>
     {

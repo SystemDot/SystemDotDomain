@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using SystemDot.Querying.Repositories;
+using SystemDot.RelationalDataStore.Repositories;
 using Microsoft.WindowsAzure.MobileServices;
 
-namespace SystemDot.Querying.AzureMobile
+namespace SystemDot.RelationalDataStore.AzureMobile
 {
     public class AsyncQuery<T> : IAsyncQuery<T>
     {
