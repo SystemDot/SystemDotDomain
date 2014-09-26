@@ -14,7 +14,7 @@ namespace SystemDot.Domain.Commands
 
         public async Task Handle(T message)
         {
-            await Task.Run(async () => await decorated.Handle(message));
+            await Task.Run(() => decorated.Handle(message));
         }
     }
 }

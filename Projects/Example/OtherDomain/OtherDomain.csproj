@@ -46,12 +46,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="SystemDot">
-      <HintPath>..\..\..\Solutions\packages\SystemDotCore.2.0.3\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SystemDot.AzureMobile\SystemDot.AzureMobile.csproj">
@@ -74,6 +70,11 @@
       <Project>{FFCCE633-9B19-410A-B870-D81A703EB027}</Project>
       <Name>SystemDot.RelationalDataStore</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SystemDot">
+      <HintPath>..\..\..\Solutions\packages\SystemDotCore.2.0.4\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
