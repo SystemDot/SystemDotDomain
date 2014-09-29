@@ -3,42 +3,51 @@ using System.Threading;
 using System.Threading.Tasks;
 using SystemDot.Configuration;
 using SystemDot.Domain.Configuration;
-using SystemDot.EventSourcing.Configuration;
-using SystemDot.EventSourcing.InMemory.Configuration;
 using SystemDot.Ioc;
-using SystemDot.Messaging.Handling.Actions;
-using SystemDot.RelationalDataStore.Configuration;
-using SystemDot.RelationalDataStore.InMemory.Configuration;
 using Example.Configuration;
 
 namespace Example
 {
     class Program
     {
+        static Task main;
+
         static void Main(string[] args)
         {
-            MainAsync();
+            main = MainAsync();
 
             while (true)
             {
                 Thread.Sleep(TimeSpan.FromSeconds(1));
+                if (main.IsFaulted)
+                {
+                    Console.WriteLine("Exception occured {0}", main.Exception);
+                    return;
+                }
                 Console.WriteLine("I am the unhindered UI thread");
             }
         }
 
         static async Task MainAsync()
         {
-            IIocContainer container = new IocContainer();
+            await MainAsyncInner();
+            
+           
+        }
 
+        static async Task MainAsyncInner()
+        {
+            IIocContainer container = new IocContainer();
+            
             await Configure.SystemDot()
-                .ResolveReferencesWith(container)
-                .UseDomain()
-                    .DispatchEventsOnUiThread()
-                    .WithSimpleMessaging()
-                .UseExample()
-                    .PersistToMemory()
-                    //.PersistToSql()
-                .InitialiseAsync();
+               .ResolveReferencesWith(container)
+               .UseDomain()
+                   .DispatchEventsOnUiThread()
+                   .WithSimpleMessaging()
+               .UseExample()
+                   .PersistToMemory()
+                //.PersistToSql()
+               .InitialiseAsync();
 
             await container.Resolve<ExampleRunner>().RunAsync();
         }

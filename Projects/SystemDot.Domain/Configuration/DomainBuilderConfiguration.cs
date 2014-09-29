@@ -19,7 +19,9 @@ namespace SystemDot.Domain.Configuration
 
         public BuilderConfiguration WithSimpleMessaging()
         {
-            return config.RegisterBuildAction(c => c.RegisterSimpleMessaging(), BuildOrder.VeryLate);
+            return config
+                .RegisterBuildAction(c => c.RegisterSimpleMessaging())
+                .RegisterBuildAction(c => c.RegisterCommandHandlersWithMessenger(), BuildOrder.VeryLate);
         }
     }
 }

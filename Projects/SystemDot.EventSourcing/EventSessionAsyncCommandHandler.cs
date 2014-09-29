@@ -1,17 +1,17 @@
 using System.Threading.Tasks;
+using SystemDot.Domain.Commands;
 using SystemDot.EventSourcing.Sessions;
-using SystemDot.Messaging.Handling;
 
 namespace SystemDot.EventSourcing
 {
-    public class EventSessionAsyncCommandHandler<T> : IAsyncMessageHandler<T>
+    public class EventSessionAsyncCommandHandler<T> : IAsyncCommandHandler<T>
     {
         readonly IEventSessionFactory eventSessionFactory;
-        readonly IAsyncMessageHandler<T> decorated;
+        readonly IAsyncCommandHandler<T> decorated;
 
         public EventSessionAsyncCommandHandler(
-            IEventSessionFactory eventSessionFactory, 
-            IAsyncMessageHandler<T> decorated)
+            IEventSessionFactory eventSessionFactory,
+            IAsyncCommandHandler<T> decorated)
         {
             this.eventSessionFactory = eventSessionFactory;
             this.decorated = decorated;

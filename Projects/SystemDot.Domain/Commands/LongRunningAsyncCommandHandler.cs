@@ -1,13 +1,12 @@
 using System.Threading.Tasks;
-using SystemDot.Messaging.Handling;
 
 namespace SystemDot.Domain.Commands
 {
-    public class LongRunningAsyncCommandHandler<T> : IAsyncMessageHandler<T>
+    public class LongRunningAsyncCommandHandler<T> : IAsyncCommandHandler<T>
     {
-        readonly IAsyncMessageHandler<T> decorated;
+        readonly IAsyncCommandHandler<T> decorated;
 
-        public LongRunningAsyncCommandHandler(IAsyncMessageHandler<T> decorated)
+        public LongRunningAsyncCommandHandler(IAsyncCommandHandler<T> decorated)
         {
             this.decorated = decorated;
         }
