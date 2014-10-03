@@ -15,6 +15,11 @@ namespace SystemDot.Domain.Configuration
             container.RegisterOpenTypeHandlersWithMessenger(typeof (IAsyncCommandHandler<>));
         }
 
+        public static void RegisterEventHandlersWithMessenger(this IIocContainer container)
+        {
+            container.RegisterOpenTypeHandlersWithMessenger(typeof(IAsyncEventHandler<>));
+        }
+
         public static void RegisterSimpleMessaging(this IIocContainer container)
         {
             container.RegisterInstance<IBus, MessengerBus>();

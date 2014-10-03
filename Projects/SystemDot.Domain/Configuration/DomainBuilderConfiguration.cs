@@ -21,7 +21,8 @@ namespace SystemDot.Domain.Configuration
         {
             return config
                 .RegisterBuildAction(c => c.RegisterSimpleMessaging())
-                .RegisterBuildAction(c => c.RegisterCommandHandlersWithMessenger(), BuildOrder.VeryLate);
+                .RegisterBuildAction(c => c.RegisterCommandHandlersWithMessenger(), BuildOrder.VeryLate)
+                .RegisterBuildAction(c => c.RegisterEventHandlersWithMessenger(), BuildOrder.VeryLate);
         }
     }
 }

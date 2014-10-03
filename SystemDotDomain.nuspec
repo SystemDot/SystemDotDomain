@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>SystemDotDomain</id>
-        <version>2.1.4-beta</version>
+        <version>2.2.0-beta</version>
         <title>SystemDotDomain</title>
         <authors>Chris Sampson,James Goodenough</authors>
         <owners>Chris Sampson,James Goodenough</owners>
@@ -14,7 +14,7 @@
         <language>en-GB</language>
         <tags>CQRS, Event sourcing, DDD, DDDD, Domain, Cross Platform</tags>
         <dependencies>
-            <dependency id="SystemDotCore" version="2.0.8" />
+            <dependency id="SystemDotCore" version="2.0.10" />
             <dependency id="Microsoft.Bcl" version="1.1.7" />
             <dependency id="Microsoft.Bcl.Build" version="1.0.14" />
             <dependency id="Microsoft.Net.Http" version="2.2.19" />

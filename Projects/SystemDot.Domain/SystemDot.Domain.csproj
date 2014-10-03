@@ -47,6 +47,7 @@
     <Compile Include="Events\Dispatching\IEventDispatcher.cs" />
     <Compile Include="Events\Dispatching\UiThreadDispatchingEventDispatcher.cs" />
     <Compile Include="Events\EventBus.cs" />
+    <Compile Include="Events\IAsyncEventHandler.cs" />
     <Compile Include="Events\IEventBus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -55,7 +56,7 @@
       <HintPath>..\..\Solutions\packages\Newtonsoft.Json.6.0.2\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SystemDot">
-      <HintPath>..\..\Solutions\packages\SystemDotCore.2.0.8\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.dll</HintPath>
+      <HintPath>..\..\Solutions\packages\SystemDotCore.2.0.10\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
