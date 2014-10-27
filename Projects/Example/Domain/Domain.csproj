@@ -37,9 +37,9 @@
   <ItemGroup>
     <Compile Include="ActivateEventSourcedThing.cs" />
     <Compile Include="ActivateEventSourcedThingCommandHandler.cs" />
-    <Compile Include="Configuration\BuilderConfigurationExtensions.cs" />
-    <Compile Include="Configuration\ExampleDomainBuilderConfiguration.cs" />
-    <Compile Include="Configuration\IocContainerExtensions.cs" />
+    <Compile Include="Bootstrapping\BootstrapBuilderConfigurationExtensions.cs" />
+    <Compile Include="Bootstrapping\ExampleDomainBootstrapBuilderConfiguration.cs" />
+    <Compile Include="Bootstrapping\IocContainerExtensions.cs" />
     <Compile Include="InvokeLongRunningProcess.cs" />
     <Compile Include="InvokeLongRunningProcessHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,11 +69,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\Solutions\packages\Newtonsoft.Json.6.0.2\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="SystemDot.Bootstrapping">
+      <HintPath>..\..\..\Solutions\packages\SystemDotBootstrapping.1.0.3\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Bootstrapping.dll</HintPath>
     </Reference>
-    <Reference Include="SystemDot">
-      <HintPath>..\..\..\Solutions\packages\SystemDotCore.2.0.10\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.dll</HintPath>
+    <Reference Include="SystemDot.Core">
+      <HintPath>..\..\..\Solutions\packages\SystemDotCore.3.0.0\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SystemDot.Ioc">
+      <HintPath>..\..\..\Solutions\packages\SystemDotIoc.1.0.1\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Ioc.dll</HintPath>
+    </Reference>
+    <Reference Include="SystemDot.Reflection">
+      <HintPath>..\..\..\Solutions\packages\SystemDotReflection.1.0.1\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Reflection.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

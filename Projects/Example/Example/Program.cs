@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using SystemDot.Configuration;
-using SystemDot.Domain.Configuration;
+using SystemDot.Bootstrapping;
+using SystemDot.Domain.Bootstrapping;
 using SystemDot.Ioc;
-using Example.Configuration;
+using Example.Bootstrapping;
 
 namespace Example
 {
@@ -30,24 +30,17 @@ namespace Example
 
         static async Task MainAsync()
         {
-            await MainAsyncInner();
-            
-           
-        }
-
-        static async Task MainAsyncInner()
-        {
             IIocContainer container = new IocContainer();
             
-            await Configure.SystemDot()
-               .ResolveReferencesWith(container)
-               .UseDomain()
-                   .DispatchEventsOnUiThread()
-                   .WithSimpleMessaging()
-               .UseExample()
-                   .PersistToMemory()
+            Bootstrap.Application()
+                .ResolveReferencesWith(container)
+                .UseDomain()
+                .DispatchEventsOnUiThread()
+                .WithSimpleMessaging()
+                .UseExample()
+                .PersistToMemory()
                 //.PersistToSql()
-               .InitialiseAsync();
+                .Initialise();
 
             await container.Resolve<ExampleRunner>().RunAsync();
         }

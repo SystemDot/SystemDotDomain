@@ -38,10 +38,10 @@
   <ItemGroup>
     <Compile Include="ActivateCrudThing.cs" />
     <Compile Include="ActivateCrudThingCommandHandler.cs" />
-    <Compile Include="Configuration\BuilderConfigurationExtensions.cs" />
-    <Compile Include="Configuration\ExampleOtherDomainBuilderConfiguration.cs" />
-    <Compile Include="Configuration\IocContainerExtensions.cs" />
-    <Compile Include="Configuration\OtherDomainDataContextAsyncCommandHandler.cs" />
+    <Compile Include="Bootstrapping\BootstrapBuilderConfigurationExtensions.cs" />
+    <Compile Include="Bootstrapping\ExampleOtherDomainBootstrapBuilderConfiguration.cs" />
+    <Compile Include="Bootstrapping\IocContainerExtensions.cs" />
+    <Compile Include="Bootstrapping\OtherDomainDataContextAsyncCommandHandler.cs" />
     <Compile Include="CrudThing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,8 +72,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="SystemDot">
-      <HintPath>..\..\..\Solutions\packages\SystemDotCore.2.0.10\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.dll</HintPath>
+    <Reference Include="SystemDot.Bootstrapping">
+      <HintPath>..\..\..\Solutions\packages\SystemDotBootstrapping.1.0.3\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Bootstrapping.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SystemDot.Core">
+      <HintPath>..\..\..\Solutions\packages\SystemDotCore.3.0.0\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SystemDot.Ioc">
+      <HintPath>..\..\..\Solutions\packages\SystemDotIoc.1.0.1\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Ioc.dll</HintPath>
+    </Reference>
+    <Reference Include="SystemDot.Reflection">
+      <HintPath>..\..\..\Solutions\packages\SystemDotReflection.1.0.1\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Reflection.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

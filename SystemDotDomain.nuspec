@@ -2,65 +2,40 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>SystemDotDomain</id>
-        <version>2.2.0-beta</version>
+        <version>3.0.0</version>
         <title>SystemDotDomain</title>
         <authors>Chris Sampson,James Goodenough</authors>
         <owners>Chris Sampson,James Goodenough</owners>
         <projectUrl>https://github.com/SystemDot/SystemDotDomain</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Domain model infrastructure based on event sourcing for cross platform development on iOS, Android, WinRT and Windows</description>
-        <summary>Domain model infrastructure based on event sourcing for cross platform development on iOS, Android, WinRT and Windows</summary>
+        <description>Domain model infrastructure for cross platform development on iOS, Android, WinRT and Windows</description>
+        <summary>Domain model infrastructure for cross platform development on iOS, Android, WinRT and Windows</summary>
         <copyright>SystemDot 2014</copyright>
         <language>en-GB</language>
-        <tags>CQRS, Event sourcing, DDD, DDDD, Domain, Cross Platform</tags>
+        <tags>DDD, DDDD, Domain, Cross Platform</tags>
         <dependencies>
-            <dependency id="SystemDotCore" version="2.0.10" />
-            <dependency id="Microsoft.Bcl" version="1.1.7" />
-            <dependency id="Microsoft.Bcl.Build" version="1.0.14" />
-            <dependency id="Microsoft.Net.Http" version="2.2.19" />
-            <dependency id="SQLitePCL" version="3.8.5.0" />
-            <dependency id="WindowsAzure.MobileServices" version="1.3.0-beta" />
-            <dependency id="WindowsAzure.MobileServices.SQLiteStore" version="1.0.0-beta" />
+            <dependency id="SystemDotBootstrapping" version="1.0.3" />
+            <dependency id="SystemDotThreadMarshalling" version="1.0.2" />
         </dependencies>
     </metadata>
     <files>
         <file src="Build\SystemDot.Domain.dll" target="lib\MonoAndroid\SystemDot.Domain.dll" />
-        <file src="Build\SystemDot.EventSourcing.dll" target="lib\MonoAndroid\SystemDot.EventSourcing.dll" />
-        <file src="Build\SystemDot.EventSourcing.InMemory.dll" target="lib\MonoAndroid\SystemDot.EventSourcing.InMemory.dll" />
-        <file src="Build\SystemDot.RelationalDataStore.dll" target="lib\MonoAndroid\SystemDot.RelationalDataStore.dll" />
-        <file src="Build\SystemDot.RelationalDataStore.InMemory.dll" target="lib\MonoAndroid\SystemDot.RelationalDataStore.InMemory.dll" />
-        <file src="Build\SystemDot.AzureMobile.dll" target="lib\MonoAndroid\SystemDot.AzureMobile.dll" />
-	<file src="Build\SystemDot.RelationalDataStore.AzureMobile.dll" target="lib\MonoAndroid\SystemDot.RelationalDataStore.AzureMobile.dll" />
-	<file src="Build\SystemDot.Domain.dll" target="lib\MonoTouch\SystemDot.Domain.dll" />
-        <file src="Build\SystemDot.EventSourcing.dll" target="lib\MonoTouch\SystemDot.EventSourcing.dll" />
-        <file src="Build\SystemDot.EventSourcing.InMemory.dll" target="lib\MonoTouch\SystemDot.EventSourcing.InMemory.dll" />
-        <file src="Build\SystemDot.RelationalDataStore.dll" target="lib\MonoTouch\SystemDot.RelationalDataStore.dll" />
-        <file src="Build\SystemDot.RelationalDataStore.InMemory.dll" target="lib\MonoTouch\SystemDot.RelationalDataStore.InMemory.dll" />
-        <file src="Build\SystemDot.AzureMobile.dll" target="lib\MonoTouch\SystemDot.AzureMobile.dll" />
-	<file src="Build\SystemDot.RelationalDataStore.AzureMobile.dll" target="lib\MonoTouch\SystemDot.RelationalDataStore.AzureMobile.dll" />
-	<file src="Build\SystemDot.Domain.dll" target="lib\net\SystemDot.Domain.dll" />
-        <file src="Build\SystemDot.EventSourcing.dll" target="lib\net\SystemDot.EventSourcing.dll" />
-        <file src="Build\SystemDot.EventSourcing.InMemory.dll" target="lib\net\SystemDot.EventSourcing.InMemory.dll" />
-        <file src="Build\SystemDot.EventSourcing.Sql.Windows.dll" target="lib\net\SystemDot.EventSourcing.Sql.Windows.dll" />
-        <file src="Build\EventStore.dll" target="lib\net\EventStore.dll" />
-        <file src="Build\EventStore.Serialization.Json.dll" target="lib\net\EventStore.Serialization.Json.dll" />
-        <file src="Build\SystemDot.RelationalDataStore.dll" target="lib\net\SystemDot.RelationalDataStore.dll" />
-        <file src="Build\SystemDot.RelationalDataStore.InMemory.dll" target="lib\net\SystemDot.RelationalDataStore.InMemory.dll" />
-        <file src="Build\SystemDot.AzureMobile.dll" target="lib\net\SystemDot.AzureMobile.dll" />
-	<file src="Build\SystemDot.RelationalDataStore.AzureMobile.dll" target="lib\net\SystemDot.RelationalDataStore.AzureMobile.dll" />
+        <file src="Build\SystemDot.Domain.pdb" target="lib\MonoAndroid\SystemDot.Domain.pdb" />
+        <file src="Build\SystemDot.Domain.Android.dll" target="lib\MonoAndroid\SystemDot.Domain.Android.dll" />
+        <file src="Build\SystemDot.Domain.Android.pdb" target="lib\MonoAndroid\SystemDot.Domain.Android.pdb" />
+        <file src="Build\SystemDot.Domain.dll" target="lib\MonoTouch\SystemDot.Domain.dll" />
+        <file src="Build\SystemDot.Domain.pdb" target="lib\MonoTouch\SystemDot.Domain.pdb" />
+        <file src="Build\SystemDot.Domain.iOS.dll" target="lib\MonoTouch\SystemDot.Domain.iOS.dll" />
+        <file src="Build\SystemDot.Domain.iOS.pdb" target="lib\MonoTouch\SystemDot.Domain.iOS.pdb" />
+	      <file src="Build\SystemDot.Domain.dll" target="lib\net\SystemDot.Domain.dll" />
+	      <file src="Build\SystemDot.Domain.pdb" target="lib\net\SystemDot.Domain.pdb" />
+	      <file src="Build\SystemDot.Domain.Windows.dll" target="lib\net\SystemDot.Domain.Windows.dll" />
+	      <file src="Build\SystemDot.Domain.Windows.pdb" target="lib\net\SystemDot.Domain.Windows.pdb" />
         <file src="Build\SystemDot.Domain.dll" target="lib\netcore\SystemDot.Domain.dll" />
-        <file src="Build\SystemDot.EventSourcing.dll" target="lib\netcore\SystemDot.EventSourcing.dll" />
-        <file src="Build\SystemDot.EventSourcing.InMemory.dll" target="lib\netcore\SystemDot.EventSourcing.InMemory.dll" />
-        <file src="Build\SystemDot.RelationalDataStore.dll" target="lib\netcore\SystemDot.RelationalDataStore.dll" />
-        <file src="Build\SystemDot.RelationalDataStore.InMemory.dll" target="lib\netcore\SystemDot.RelationalDataStore.InMemory.dll" />
-        <file src="Build\SystemDot.AzureMobile.dll" target="lib\netcore\SystemDot.AzureMobile.dll" />
-	<file src="Build\SystemDot.RelationalDataStore.AzureMobile.dll" target="lib\netcore\SystemDot.RelationalDataStore.AzureMobile.dll" />
-	<file src="Build\SystemDot.Domain.dll" target="lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Domain.dll" />
-        <file src="Build\SystemDot.EventSourcing.dll" target="lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.EventSourcing.dll" />
-        <file src="Build\SystemDot.EventSourcing.InMemory.dll" target="lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.EventSourcing.InMemory.dll" />
-        <file src="Build\SystemDot.RelationalDataStore.dll" target="lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.RelationalDataStore.dll" />
-	<file src="Build\SystemDot.RelationalDataStore.InMemory.dll" target="lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.RelationalDataStore.InMemory.dll" />
-	<file src="Build\SystemDot.AzureMobile.dll" target="lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.AzureMobile.dll" />
-	<file src="Build\SystemDot.RelationalDataStore.AzureMobile.dll" target="lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.RelationalDataStore.AzureMobile.dll" />
+        <file src="Build\SystemDot.Domain.pdb" target="lib\netcore\SystemDot.Domain.pdb" />
+        <file src="Build\SystemDot.Domain.WindowsStore.dll" target="lib\netcore\SystemDot.Domain.WindowsStore.dll" />
+        <file src="Build\SystemDot.Domain.WindowsStore.pdb" target="lib\netcore\SystemDot.Domain.WindowsStore.pdb" />
+        <file src="Build\SystemDot.Domain.dll" target="lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Domain.dll" />
+        <file src="Build\SystemDot.Domain.pdb" target="lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Domain.pdb" />
     </files>
 </package>

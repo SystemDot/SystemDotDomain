@@ -34,41 +34,35 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Esent.Interop, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Solutions\packages\SystemDotCore.2.0.10\lib\net\Esent.Interop.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Solutions\packages\Newtonsoft.Json.6.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="SystemDot, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Solutions\packages\SystemDotCore.2.0.10\lib\net\SystemDot.dll</HintPath>
+    <Reference Include="SystemDot.Bootstrapping">
+      <HintPath>..\..\..\Solutions\packages\SystemDotBootstrapping.1.0.3\lib\net\SystemDot.Bootstrapping.dll</HintPath>
     </Reference>
-    <Reference Include="SystemDot.Storage.Changes.Esent.Windows, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Solutions\packages\SystemDotCore.2.0.10\lib\net\SystemDot.Storage.Changes.Esent.Windows.dll</HintPath>
+    <Reference Include="SystemDot.Bootstrapping.Windows">
+      <HintPath>..\..\..\Solutions\packages\SystemDotBootstrapping.1.0.3\lib\net\SystemDot.Bootstrapping.Windows.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="SystemDot.Storage.Changes.Sql.Windows, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Solutions\packages\SystemDotCore.2.0.10\lib\net\SystemDot.Storage.Changes.Sql.Windows.dll</HintPath>
+    <Reference Include="SystemDot.Core">
+      <HintPath>..\..\..\Solutions\packages\SystemDotCore.3.0.0\lib\net\SystemDot.Core.dll</HintPath>
     </Reference>
-    <Reference Include="SystemDot.Storage.Changes.SqlServer.Windows, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Solutions\packages\SystemDotCore.2.0.10\lib\net\SystemDot.Storage.Changes.SqlServer.Windows.dll</HintPath>
+    <Reference Include="SystemDot.Ioc">
+      <HintPath>..\..\..\Solutions\packages\SystemDotIoc.1.0.1\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Ioc.dll</HintPath>
     </Reference>
-    <Reference Include="SystemDot.Windows, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Solutions\packages\SystemDotCore.2.0.10\lib\net\SystemDot.Windows.dll</HintPath>
+    <Reference Include="SystemDot.Messaging">
+      <HintPath>..\..\..\Solutions\packages\SystemDotMessaging.1.0.1\lib\net\SystemDot.Messaging.dll</HintPath>
+    </Reference>
+    <Reference Include="SystemDot.Reflection">
+      <HintPath>..\..\..\Solutions\packages\SystemDotReflection.1.0.1\lib\net\SystemDot.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="SystemDot.Reflection.Windows">
+      <HintPath>..\..\..\Solutions\packages\SystemDotReflection.1.0.1\lib\net\SystemDot.Reflection.Windows.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\BuilderConfigurationExtensions.cs" />
-    <Compile Include="Configuration\ExampleBuilderConfiguration.cs" />
-    <Compile Include="Configuration\IocContainerExtensions.cs" />
+    <Compile Include="Bootstrapping\BootstrapBuilderConfigurationExtensions.cs" />
+    <Compile Include="Bootstrapping\ExampleBootstrapBuilderConfiguration.cs" />
+    <Compile Include="Bootstrapping\IocContainerExtensions.cs" />
     <Compile Include="ExampleRunner.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
