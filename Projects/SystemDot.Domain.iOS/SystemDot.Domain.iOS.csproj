@@ -81,16 +81,33 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="SystemDot.Bootstrapping, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Solutions\packages\SystemDotBootstrapping.1.0.3\lib\MonoTouch\SystemDot.Bootstrapping.dll</HintPath>
+    <Reference Include="SystemDot.Bootstrapping">
+      <HintPath>..\..\Solutions\packages\SystemDotBootstrapping.1.0.4\lib\MonoTouch\SystemDot.Bootstrapping.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="SystemDot.Ioc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Solutions\packages\SystemDotIoc.1.0.1\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Ioc.dll</HintPath>
+    <Reference Include="SystemDot.Bootstrapping.iOS">
+      <HintPath>..\..\Solutions\packages\SystemDotBootstrapping.1.0.4\lib\MonoTouch\SystemDot.Bootstrapping.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SystemDot.Ioc">
+      <HintPath>..\..\Solutions\packages\SystemDotIoc.1.0.3\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Ioc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SystemDot.Reflection">
+      <HintPath>..\..\Solutions\packages\SystemDotReflection.1.0.2\lib\MonoTouch\SystemDot.Reflection.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SystemDot.Reflection.iOS">
+      <HintPath>..\..\Solutions\packages\SystemDotReflection.1.0.2\lib\MonoTouch\SystemDot.Reflection.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SystemDot.ThreadMarshalling">
+      <HintPath>..\..\Solutions\packages\SystemDotThreadMarshalling.1.0.3\lib\MonoTouch\SystemDot.ThreadMarshalling.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="SystemDot.ThreadMarshalling.iOS">
-      <HintPath>..\..\Solutions\packages\SystemDotThreadMarshalling.1.0.2\lib\MonoTouch\SystemDot.ThreadMarshalling.iOS.dll</HintPath>
+      <HintPath>..\..\Solutions\packages\SystemDotThreadMarshalling.1.0.3\lib\MonoTouch\SystemDot.ThreadMarshalling.iOS.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
