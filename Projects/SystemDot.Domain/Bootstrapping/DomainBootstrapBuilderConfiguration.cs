@@ -16,7 +16,5 @@ namespace SystemDot.Domain.Bootstrapping
             Config.RegisterBuildAction(c => c.DecorateEventDispatcherWithUiThreadDispatching());
             return this;
         }
-
-        
     }
 }

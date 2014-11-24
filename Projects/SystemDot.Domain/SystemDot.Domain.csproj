@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="Commands\CommandValidator.cs" />
     <Compile Include="Events\ValidationFailed.cs" />
+    <Compile Include="Queries\IAsyncQueryHandler.cs" />
     <Compile Include="ValueObject.cs" />
     <Compile Include="Commands\CommandBus.cs" />
     <Compile Include="Commands\ICommandBus.cs" />
