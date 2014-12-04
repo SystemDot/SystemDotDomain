@@ -31,4 +31,34 @@ namespace SystemDot.Domain.Commands
 
         protected abstract void Validate(TCommand command, ValidationFailed failureEvent);
     }
+
+    public abstract class CommandValidator<TCommand> : IAsyncCommandHandler<TCommand>
+    {
+        private readonly IAsyncCommandHandler<TCommand> inner;
+        private readonly ICommandValidationPresenter<TCommand> validationPresenter;
+
+        protected CommandValidator(
+            IAsyncCommandHandler<TCommand> inner,
+            ICommandValidationPresenter<TCommand> validationPresenter)
+        {
+            this.inner = inner;
+            this.validationPresenter = validationPresenter;
+        }
+
+        public async Task Handle(TCommand command)
+        {
+            var validationState = new CommandValidationState<TCommand>();
+
+            Validate(command, validationState);
+
+            if (validationState.IsValid)
+            {
+                await inner.Handle(command);
+            }
+
+            validationPresenter.Present(validationState);
+        }
+
+        protected abstract void Validate(TCommand command, CommandValidationState<TCommand> validationState);
+    }
 }
