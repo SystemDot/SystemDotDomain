@@ -21,7 +21,7 @@ namespace SystemDot.Domain.Commands
         {
             ValidationFailed failureEvent = new TValidationFailedEvent();
 
-            Validate(command, failureEvent);
+            await ValidateAsync(command, failureEvent);
 
             if (failureEvent.IsEmpty())
                 await inner.Handle(command);
@@ -29,7 +29,7 @@ namespace SystemDot.Domain.Commands
                 eventBus.PublishEvent(failureEvent);
         }
 
-        protected abstract void Validate(TCommand command, ValidationFailed failureEvent);
+        protected abstract Task ValidateAsync(TCommand command, ValidationFailed failureEvent);
     }
 
     public abstract class CommandValidator<TCommand> : IAsyncCommandHandler<TCommand>
