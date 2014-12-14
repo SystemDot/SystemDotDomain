@@ -49,7 +49,7 @@ namespace SystemDot.Domain.Commands
         {
             var validationState = new CommandValidationState<TCommand>();
 
-            Validate(command, validationState);
+            await ValidateAsync(command, validationState);
 
             if (validationState.IsValid)
             {
@@ -59,6 +59,6 @@ namespace SystemDot.Domain.Commands
             validationPresenter.Present(validationState);
         }
 
-        protected abstract void Validate(TCommand command, CommandValidationState<TCommand> validationState);
+        protected abstract Task ValidateAsync(TCommand command, CommandValidationState<TCommand> validationState);
     }
 }
