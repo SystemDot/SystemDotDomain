@@ -38,8 +38,12 @@
     <Compile Include="Commands\CommandValidationState.cs" />
     <Compile Include="Commands\CommandValidator.cs" />
     <Compile Include="Commands\ICommandValidationPresenter.cs" />
+    <Compile Include="Commands\IocContainerExtensions.cs" />
+    <Compile Include="Events\IocContainerExtensions.cs" />
     <Compile Include="Events\ValidationFailed.cs" />
+    <Compile Include="InMemoryStore.cs" />
     <Compile Include="Queries\IAsyncQueryHandler.cs" />
+    <Compile Include="Queries\IocContainerExtensions.cs" />
     <Compile Include="ValueObject.cs" />
     <Compile Include="Commands\CommandBus.cs" />
     <Compile Include="Commands\ICommandBus.cs" />
@@ -63,10 +67,10 @@
       <HintPath>..\..\Solutions\packages\SystemDotBootstrapping.1.0.4\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Bootstrapping.dll</HintPath>
     </Reference>
     <Reference Include="SystemDot.Core">
-      <HintPath>..\..\Solutions\packages\SystemDotCore.3.0.1\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Core.dll</HintPath>
+      <HintPath>..\..\Solutions\packages\SystemDotCore.3.1.2\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Core.dll</HintPath>
     </Reference>
     <Reference Include="SystemDot.Ioc">
-      <HintPath>..\..\Solutions\packages\SystemDotIoc.1.0.3\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Ioc.dll</HintPath>
+      <HintPath>..\..\Solutions\packages\SystemDotIoc.1.2.0\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Ioc.dll</HintPath>
     </Reference>
     <Reference Include="SystemDot.Messaging">
       <HintPath>..\..\Solutions\packages\SystemDotMessaging.1.0.2\lib\portable-win+net45+MonoAndroid+MonoTouch+win8\SystemDot.Messaging.dll</HintPath>
