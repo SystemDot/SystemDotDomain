@@ -1,3 +1,6 @@
+using System;
+using SystemDot.Core.Collections;
+
 namespace SystemDot.Domain
 {
     using System.Collections.Generic;
@@ -20,6 +23,16 @@ namespace SystemDot.Domain
         public void Add<T>(T toAdd)
         {
             items.Add(toAdd);
+        }
+
+        public void Remove<T>(Func<T, bool> predicate)
+        {
+            Query<T>().Where(predicate).ToList().ForEach(Remove);
+        }
+
+        public void Remove<T>(T toRemove)
+        {
+            items.Remove(toRemove);
         }
     }
 }
