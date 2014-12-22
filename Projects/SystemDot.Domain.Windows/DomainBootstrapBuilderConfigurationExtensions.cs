@@ -11,7 +11,6 @@ namespace SystemDot.Domain
             return config.Config
                 .UseThreadMarshalling()
                 .RegisterBuildAction(c => c.RegisterSimpleMessaging())
-                .RegisterBuildAction(c => c.RegisterCommandHandlersWithMessenger(), BuildOrder.Late)
                 .RegisterBuildAction(c => c.RegisterEventHandlersWithMessenger(), BuildOrder.Late);
         }
     }

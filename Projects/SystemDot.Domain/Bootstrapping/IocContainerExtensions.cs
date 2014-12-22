@@ -10,11 +10,6 @@ namespace SystemDot.Domain.Bootstrapping
 {
     public static class IocContainerExtensions
     {
-        public static void RegisterCommandHandlersWithMessenger(this IIocContainer container)
-        {
-            container.RegisterOpenTypeHandlersWithMessenger(typeof (IAsyncCommandHandler<>));
-        }
-
         public static void RegisterEventHandlersWithMessenger(this IIocContainer container)
         {
             container.RegisterOpenTypeHandlersWithMessenger(typeof(IAsyncEventHandler<>));

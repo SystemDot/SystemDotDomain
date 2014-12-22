@@ -14,5 +14,10 @@ namespace SystemDot.Domain.Commands
         {
             await bus.RequestAndHandleReplyAsync(command, onReply);
         }
+
+        public static async Task HandleWithAsync<T>(this T command, IAsyncCommandHandler<T> handler)
+        {
+            await handler.Handle(command);
+        }
     }
 }
