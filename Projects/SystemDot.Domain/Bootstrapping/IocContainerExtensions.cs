@@ -17,7 +17,7 @@ namespace SystemDot.Domain.Bootstrapping
 
         public static void RegisterSimpleMessaging(this IIocContainer container)
         {
-            container.RegisterInstance<IBus, MessengerBus>();
+            container.RegisterInstance<IBus, DispatcherBus>();
         }
 
         public static void DecorateEventDispatcherWithUiThreadDispatching(this IIocContainer container)
