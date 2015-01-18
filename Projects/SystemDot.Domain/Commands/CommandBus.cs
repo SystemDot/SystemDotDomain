@@ -32,7 +32,7 @@ namespace SystemDot.Domain.Commands
             await bus.SendAsync(request, responseHandler);
         }
 
-        public ActionSubscriptionToken<TMessage> RegisterHandler<TMessage>(Action<TMessage> toRegister)
+        public ActionHandlerSubscriptionToken<TMessage> RegisterHandler<TMessage>(Action<TMessage> toRegister)
         {
             return bus.RegisterHandler(toRegister);
         }

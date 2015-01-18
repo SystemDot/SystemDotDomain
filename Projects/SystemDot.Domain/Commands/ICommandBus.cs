@@ -9,6 +9,6 @@ namespace SystemDot.Domain.Commands
         Task SendCommandAsync<T>(Action<T> initaliseCommandAction) where T : new();
         Task SendCommandAsync<T>(T command);
         Task RequestAndHandleReplyAsync<TRequest, TResponse>(TRequest request, Action<TResponse> responseHandler);
-        ActionSubscriptionToken<TMessage> RegisterHandler<TMessage>(Action<TMessage> toRegister);
+        ActionHandlerSubscriptionToken<TMessage> RegisterHandler<TMessage>(Action<TMessage> toRegister);
     }
 }
