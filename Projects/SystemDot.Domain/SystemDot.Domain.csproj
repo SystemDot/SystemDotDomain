@@ -40,7 +40,6 @@
     <Compile Include="Commands\ICommandValidationPresenter.cs" />
     <Compile Include="Commands\IocContainerExtensions.cs" />
     <Compile Include="Events\IocContainerExtensions.cs" />
-    <Compile Include="Events\ValidationFailed.cs" />
     <Compile Include="InMemoryStore.cs" />
     <Compile Include="Queries\IAsyncQueryHandler.cs" />
     <Compile Include="Queries\IocContainerExtensions.cs" />
