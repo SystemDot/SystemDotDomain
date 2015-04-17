@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>SystemDotDomain</id>
-        <version>3.6.7</version>
+        <version>3.6.8</version>
         <title>SystemDot.Domain</title>
         <authors>Chris Sampson,James Goodenough</authors>
         <owners>Chris Sampson,James Goodenough</owners>
@@ -14,10 +14,10 @@
         <language>en-GB</language>
         <tags>DDD, DDDD, Domain, Cross Platform</tags>
         <dependencies>
-            <dependency id="SystemDotCore" version="3.1.2" />
-            <dependency id="SystemDotIoc" version="1.2.0" />
+            <dependency id="SystemDotCore" version="3.3.0" />
+            <dependency id="SystemDotIoc" version="1.3.1" />
             <dependency id="SystemDotMessaging" version="2.1.0" />
-            <dependency id="SystemDotBootstrapping" version="1.0.4" />
+            <dependency id="SystemDotBootstrapping" version="1.0.5" />
             <dependency id="SystemDotThreadMarshalling" version="1.0.3" />
         </dependencies>
     </metadata>
